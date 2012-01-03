@@ -15,6 +15,7 @@ group :assets do
   gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
   gem 'therubyracer'
+  gem 'mocha'
 end
 
 gem 'jquery-rails'
@@ -33,5 +34,6 @@ group :test,:development do
   gem 'turn', :require => false
   gem 'rspec-rails'
   gem 'shoulda'
+  gem 'shoulda-matchers'
   gem 'factory_girl_rails'
 end

@@ -5,3 +5,7 @@ Factory.define :part do |p|
   p.quantity 100
   p.nominal_quantity 299
 end
+
+Factory.define :parts_kit do |p|
+  p.name "Test Kit"
+end

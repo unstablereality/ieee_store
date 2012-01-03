@@ -1,0 +1,17 @@
+<%= form_for @transaction do |f| %>
+  
+  <p>Student E-mail (required)<%= f.text_field :student_email %></p>
+  <table>
+    <tr>
+      <td>Transaction ID</td>
+      <td>Student E-Mail Address</td>
+      <td>Transaction Total</td>
+    </tr>
+    <tr>
+      <% @transaction.transaction_parts.each do |c| %>
+        <% render "component", :component => c %>
+      <% end %>
+    </tr>
+  </table>
+  <!-- cancel button goes here.  will call DESTROY from transaction controller -->
+<% end %>

@@ -1,0 +1,5 @@
+<%= form_for @parts_kit do |f| %>
+  <p>Kit Name: <%= f.text_field :name %></p>
+  <p>Kit Price: <%= f.text_field :kit_price, :class => "money" %></p>
+  <%= f.submit %>  <%= button_to("Cancel", parts_kits_path) %>
+<% end %>

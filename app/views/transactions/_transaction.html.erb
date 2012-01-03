@@ -1,0 +1,9 @@
+<tr>
+  <td><%= link_to_unless_current transaction.id, transaction %></td>
+  <% if current_page?(:action=>"index", :controller=>"transactions") %>
+    <td><%= transaction.student_email %></td>
+  <% end %>
+  <% if current_page?(:action=>"index", :controller=>"transactions") %>
+    <td><%= transaction.transaction_total %></td>
+  <% end %>
+</tr>

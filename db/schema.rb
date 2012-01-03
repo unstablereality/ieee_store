@@ -11,18 +11,61 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111004004416) do
+ActiveRecord::Schema.define(:version => 20111115020220) do
+
+  create_table "kit_components", :force => true do |t|
+    t.integer  "parts_kit_id"
+    t.integer  "part_id"
+    t.integer  "part_quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "parts", :force => true do |t|
-    t.string  "name"
-    t.string  "description"
-    t.integer "jameco_pn"
-    t.integer "quantity"
-    t.integer "nominal_quantity"
-    t.decimal "single_cost"
-    t.decimal "lot_cost"
-    t.integer "lot_size"
-    t.decimal "student_price"
+    t.string   "name"
+    t.string   "description"
+    t.string   "jameco_pn"
+    t.integer  "quantity"
+    t.integer  "nominal_quantity"
+    t.integer  "single_cost"
+    t.integer  "lot_cost"
+    t.integer  "lot_size"
+    t.integer  "student_price"
+    t.boolean  "deprecated",       :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "parts_kits", :force => true do |t|
+    t.string   "name"
+    t.integer  "kit_price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "transaction_parts", :force => true do |t|
+    t.integer  "transaction_id"
+    t.integer  "part_id"
+    t.integer  "part_quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "transactions", :force => true do |t|
+    t.string   "student_email"
+    t.integer  "transaction_total"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

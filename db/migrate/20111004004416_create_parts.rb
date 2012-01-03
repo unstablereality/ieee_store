@@ -1,19 +1,18 @@
 class CreateParts < ActiveRecord::Migration
-  def up
+  def change
     create_table :parts do |t|
       t.string :name
       t.string :description
       t.string :jameco_pn
       t.integer :quantity
       t.integer :nominal_quantity
-      t.decimal :single_cost
-      t.decimal :lot_cost
+      t.integer :single_cost
+      t.integer :lot_cost
       t.integer :lot_size
-      t.decimal :student_price      
+      t.integer :student_price
+      t.boolean :deprecated, :default => false
+      
+      t.timestamps
     end
-  end
-
-  def down
-    drop_table :parts
   end
 end

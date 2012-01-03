@@ -1,0 +1,15 @@
+<%= render 'form'%>
+<%= link_to "Add Component", new_kit_component_path(@parts_kit) %>
+<table>
+  <tr>
+    <th>Part Name</th>
+    <th>Description</th>
+    <th>Jameco Part No.</th>    
+    <th>Quantity in Kit</td>
+  </tr>
+  <tr>
+    <!--<% @parts_kit.kit_components.each do |c| %>-->
+      <%= render @parts_kit.kit_components %>
+    <!--<% end %>-->
+  </tr>
+</table>

@@ -1,0 +1,32 @@
+<%= form_for @part do |f| %>
+  <table>
+    <tr>
+      <td>Name*</td>
+      <td>Description*</td>
+      <td>Jameco Part No.</td>
+      <td>Quantity on Hand</td>
+      <td>Nominal Quantity</td>
+      <td>Single Cost</td>
+      <td>Lot Cost</td>
+      <td>Lot Size</td>
+      <td>Student Price</td>
+      <td>Deprecated</td>
+    </tr>
+    <tr>
+      <td><%= f.text_field :name%></td>
+      <td><%= f.text_field :description %></td>
+      <td><%= f.text_field :jameco_pn, :size => '8' %></td>
+      <td><%= f.text_field :quantity, :size => '3' %></td>
+      <td><%= f.text_field :nominal_quantity, :size => '3' %></td>
+      <td><%= f.text_field :single_cost, :size => '6', :class => "money" %></td>
+      <td><%= f.text_field :lot_cost, :size => '6', :class => "money" %></td>
+      <td><%= f.text_field :lot_size, :size => '3' %></td>
+      <td><%= f.text_field :student_price, :size => '6', :class => "money" %></td>
+      <td><%= check_box("part", "deprecated") %></td>
+    </tr>
+  </table>
+  <div id='buttons'>
+    <%= f.submit :class => "submit" %>  <%= button_to("Cancel", parts_path, :class => "cancel") %>
+  </div> <br />
+  <p>* denotes a required field</p>
+<% end %>

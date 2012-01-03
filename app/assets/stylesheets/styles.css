@@ -1,0 +1,55 @@
+#show_part{
+
+}
+
+table{
+ border: 0;
+}
+
+#show_part td{
+  padding: 10px;
+  text-align: center;
+}
+
+th{
+  background-color: DarkGray;
+  border: 0;
+  padding: 2px;
+  text-align: center;
+}
+
+td{
+  background-color: Gray;
+  border: 0;
+  padding: 2px;
+  text-align: center;
+}
+
+.submit{
+  float: left;
+}
+
+.cancel{
+  float: left;
+}
+
+.delete_button{
+  background-image: delete-button.png;
+  background-color: transparent;
+  border: none;
+}
+
+.edit_button{
+  background-image: edit-button.png;
+  background-color: transparent;
+  border: none;
+}
+
+.flash_message{
+  clear:right;
+}
+
+.list{
+  float: left;
+  padding-right: 20px;
+}

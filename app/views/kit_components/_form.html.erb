@@ -1,0 +1,10 @@
+<%= form_for @kit_component do |f| %>
+
+<tr>
+  <td><%= f.text_field :part_id, :size => '6' %>
+  <td><%= f.text_field :part_quantity, :size => '3' %></td>
+</tr>
+  <div id='buttons'>
+    <%= f.submit :class => "submit" %>  <%= button_to("Cancel", kit_component_path, :class => "cancel") %>
+  </div> <br />
+<% end %>
