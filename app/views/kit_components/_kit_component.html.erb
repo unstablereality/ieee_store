@@ -1,0 +1,8 @@
+<tr>
+  <td><%= kit_component.part.name %></td>
+  <td><%= kit_component.part.description %></td>
+  <td><%= kit_component.part.jameco_pn %></td>
+  <td><%= kit_component.part_quantity %></td>
+  <td class = "edit_button"><%= link_to "Edit", edit_kit_component_path(kit_component) %></td>
+  <td class = "delete_button"><%= link_to "Delete", kit_component, :method => :delete, :confirm => "Are you sure?" %>
+</tr>

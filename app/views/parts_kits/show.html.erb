@@ -1,5 +1,6 @@
 <h2>Kit Name: <%= @parts_kit.name %></h2>
 <h3>Kit Price: <%= @parts_kit.kit_price %></h2>
+<%= link_to "Edit Kit", edit_parts_kit_path(@parts_kit) %>
 <table id='show_part'>
   <tr>
     <th>Part Name</th>
@@ -7,6 +8,6 @@
     <th>Jameco Part No.</th>
     <th>Quantity in Kit</th>
   </tr>
-    <%= render @parts_kit.kit_component %>
+  <%= render @parts_kit.kit_components %>
 </table>
-<%= link_to "Edit Kit", edit_parts_kit_path(@parts_kit) %>
+
