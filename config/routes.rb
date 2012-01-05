@@ -61,5 +61,6 @@ IeeeStore::Application.routes.draw do
   resources :kit_components
   resources :transactions
   resources :sessions
+  resources :transaction_parts
   root :to => 'sessions#show'
 end

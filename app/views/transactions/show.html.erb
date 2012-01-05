@@ -1,0 +1,14 @@
+<h2>Transaction Number: <%= @transaction.id %></h2>
+<h3>Student E-Mail: <%= @transaction.student_email %></h2>
+<%= link_to "Edit Transaction", edit_transaction_path(@transaction) %>
+<table id='transaction_parts'>
+  <tr>
+    <th>Part Name</th>
+    <th>Description</th>
+    <th>Jameco Part No.</th>
+    <th>Quantity</th>
+    <th>Price</th>
+  </tr>
+  <%= render @transaction.transaction_parts %>
+</table>
+
