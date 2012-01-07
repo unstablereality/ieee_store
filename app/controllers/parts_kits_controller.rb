@@ -24,7 +24,7 @@ class PartsKitsController < ApplicationController
   def update
     @parts_kit = PartsKit.find(params[:id])
     if (@parts_kit.update_attributes(params[:parts_kit]))
-      redirect_to :parts_kits
+      redirect_to "/parts_kits/#{@parts_kit.id}"
     else
       flash.alert = "Update Failed!"
       render :edit
