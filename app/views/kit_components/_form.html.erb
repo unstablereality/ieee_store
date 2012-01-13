@@ -1,17 +1,13 @@
 <%= form_for @kit_component do |f| %>
-<table>
+<table class="subform">
   <tr>
-    <th>Part Kit ID</th>
-    <th>Part ID</th>
-    <th>Part Quantity</th>
-  </tr>
-  <tr>
-    <td><%= f.text_field :parts_kit_id%></td>
-    <td><%= f.text_field :part_id%></td>
+    <td><%= collection_select(:part, :part_id, Part.order(:name).all, :id, :name_and_desc, :prompt => true)%></td>
+    <td></td>
+    <td></td>
     <td><%= f.text_field :part_quantity%></td>
   </tr>
 </table>
-  <div id='buttons'>
+  <div id='buttons'>  
     <%= f.submit :class => "submit" %>
   </div> <br />
 <% end %>

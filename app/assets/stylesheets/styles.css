@@ -25,12 +25,21 @@ td{
   text-align: center;
 }
 
+.buttons{
+  float:left;
+}
+
 .submit{
   float: left;
 }
 
 .cancel{
   float: left;
+}
+
+.submit_button{
+  background-color: transparent;
+  border: none;
 }
 
 .delete_button{
@@ -52,4 +61,8 @@ td{
 .list{
   float: left;
   padding-right: 20px;
+}
+
+.subform{
+  float: left;
 }

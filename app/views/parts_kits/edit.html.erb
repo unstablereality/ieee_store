@@ -1,5 +1,5 @@
 <%= render 'form' %>
-<%= link_to "Add Component", new_kit_component_path, :parts_kit_id => @parts_kit.id %>
+<%# link_to "Add Component", new_kit_component_path, :parts_kit_id => @parts_kit.id %>
 <table id='show_part'>
   <tr>
     <th>Part Name</th>
@@ -8,4 +8,12 @@
     <th>Quantity in Kit</th>
   </tr>
   <%= render @parts_kit.kit_components %>
+  <tr><%= form_tag "/kit_components" do %>
+    <td><%= collection_select(:part, :part_id, Part.order(:name).all, :id, :name_and_desc, :prompt => true)%>
+    <td></td>
+    <td></td>
+    <td><%= text_field_tag :part_quantity%></td>
+    <td class = "submit_button" ><%= submit_tag(value="Save") %></td>
+    <% end %>
+  </tr>
 </table>

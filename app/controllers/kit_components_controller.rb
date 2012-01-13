@@ -9,7 +9,7 @@ class KitComponentsController < ApplicationController
       redirect_to "/parts_kits/#{@kit_component.parts_kit_id}/edit"
     else
       flash.alert = "Save Failed!"
-      render :new
+      redirect_to "/parts_kits/#{params[:id]}/edit"
     end
   end
   
