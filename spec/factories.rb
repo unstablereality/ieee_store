@@ -9,3 +9,5 @@ end
 Factory.define :parts_kit do |p|
   p.name "Test Kit"
 end
+
+

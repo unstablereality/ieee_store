@@ -67,7 +67,7 @@ describe PartsKitsController do
         @parts_kit.expects(:update_attributes).returns(true)
         put :update, :id => 1, :parts_kit => {}
       }
-      it {should redirect_to(:parts_kits)}
+      it {should redirect_to("/parts_kits/#{@parts_kit.id}")}
     end
     context 'Save Failed' do
       before {

@@ -6,10 +6,12 @@ class KitComponentsController < ApplicationController
   def create
     @kit_component = KitComponent.new(params[:kit_component])
     if (@kit_component.save)
-      redirect_to "/parts_kits/#{@kit_component.parts_kit_id}/edit"
+      #redirect_to "/parts_kits/#{@kit_component.parts_kit_id}/edit"
+      redirect_to :back
     else
       flash.alert = "Save Failed!"
-      redirect_to "/parts_kits/#{params[:id]}/edit"
+      #redirect_to "/parts_kits/#{params[:id]}/edit"
+      redirect_to :back
     end
   end
   
