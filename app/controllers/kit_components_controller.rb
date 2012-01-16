@@ -15,14 +15,6 @@ class KitComponentsController < ApplicationController
     end
   end
   
-  def show
-    @kit_component = KitComponent.find(params[:id])
-  end
-  
-  def index
-    @kit_components = KitComponent.all
-  end
-  
   def edit
     @kit_component = KitComponent.find(params[:id])
   end
@@ -30,7 +22,7 @@ class KitComponentsController < ApplicationController
   def update
     @kit_component = KitComponent.find(params[:id])
     if (@kit_component.update_attributes(params[:kit_component]))
-      redirect_to :kit_components
+      redirect_to "/parts_kits/#{@kit_component.parts_kit_id}/edit"
     else
       flash.alert = "Update Failed!"
       render :edit
@@ -39,13 +31,12 @@ class KitComponentsController < ApplicationController
   
   def destroy
     @kit_component = KitComponent.find(params[:id])
-    @kit_id = @kit_component.parts_kit_id
     if (@kit_component.delete)
       flash.notice = "KitComponent Successfully Deleted"
-      redirect_to "/parts_kits/#{@kit_id}/edit"
+      redirect_to :back
     else
       flash.alert = "Destroy Failed!"
-      redirect_to "/parts_kits/#{@kit_id}/edit"
+      redirect_to :back
     end
   end
 end

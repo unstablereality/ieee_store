@@ -1,6 +1,5 @@
 class Part < ActiveRecord::Base
-  validates :name, :uniqueness => true, 
-                   :presence => true
+  validates :name, :presence => true
   validates :description, :presence => true
   validates :jameco_pn, :uniqueness => true,
                    :presence => true

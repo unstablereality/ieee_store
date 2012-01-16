@@ -1,10 +1,12 @@
 <%= form_for @kit_component do |f| %>
-<table class="subform">
+<table>
+  <th>Name</th>
+  <th>Description</th>
+  <th>Quantity</th>
   <tr>
-    <td><%= collection_select(:part, :part_id, Part.order(:name).all, :id, :name_and_desc, :prompt => true)%></td>
-    <td></td>
-    <td></td>
-    <td><%= f.text_field :part_quantity%></td>
+    <td><%= @kit_component.part.name %></td>
+    <td><%= @kit_component.part.description %></td>
+    <td ><%= f.text_field :part_quantity%></td>
   </tr>
 </table>
   <div id='buttons'>  

@@ -10,4 +10,8 @@ Factory.define :parts_kit do |p|
   p.name "Test Kit"
 end
 
-
+Factory.define :kit_component do |kc|
+  kc.parts_kit_id "1"
+  kc.part_id "1"
+  kc.part_quantity "1"
+end
