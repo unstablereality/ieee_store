@@ -2,6 +2,8 @@
   <td><%= transaction_part.part.name %></td>
   <td><%= transaction_part.part.description %></td>
   <td><%= transaction_part.part.jameco_pn %></td>
-  <td><%= transaction_part.part_quantity %></td>
   <td><%= transaction_part.part.student_price %></td>
+  <td><%= transaction_part.part_quantity %></td>
+  <td class = "edit_button"><%= link_to "Edit", edit_transaction_part_path(transaction_part) %></td>
+  <td class = "delete_button"><%= link_to "Delete", transaction_part, :method => :delete, :confirm => "Are you sure?" %>
 </tr>

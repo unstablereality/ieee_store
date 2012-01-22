@@ -1,41 +1,5 @@
-<h1>Transaction : <%= @lasttrans.id %></h1>
-<table id='show_part'>
-  <tr>
-    <th>Part Name</th>
-    <th>Description</th>
-    <th>Jameco Part No.</th>
-    <th>Price</th>
-    <th>Quantity</th>
-  </tr>
-  <%= render @transaction.transaction_parts %>
-  <tr><%= form_tag "/transaction_parts" do %>
-    <td><%= collection_select(:transaction_part, :part_id, Part.order(:name).all, :id, :name_and_desc, :prompt => true)%>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td><%= text_field(:transaction_part, :part_quantity) %></td>
-    <td class = "submit_button" ><%= submit_tag(value="Add to order") %></td>
-    <%= hidden_field(:transaction_part, :transaction_id, options={:value => @lasttrans}) %>
-    <% end %>
-  </tr>
-</table>
-
-<!--
 <%= form_for @transaction do |f| %>
   
   <p>Student E-mail (required)<%= f.text_field :student_email %></p>
-  <table>
-    <tr>
-      <td>Transaction ID</td>
-      <td>Student E-Mail Address</td>
-      <td>Transaction Total</td>
-    </tr>
-    <tr>
-      <% @transaction.transaction_parts.each do |c| %>
-        <% render "component", :component => c %>
-      <% end %>
-    </tr>
-  </table>
-  <!-- cancel button goes here.  will call DESTROY from transaction controller
+  <%= f.submit %>
 <% end %>
--->

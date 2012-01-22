@@ -6,7 +6,7 @@ class TransactionPartsController < ApplicationController
   def create
     @transaction_part = TransactionPart.new(params[:transaction_part])
     if (@transaction_part.save)
-      redirect_to "/transaction/#{@transaction.id}/edit"
+      redirect_to :back
     else
       flash.alert = "Save Failed!"
       render :new
@@ -28,7 +28,7 @@ class TransactionPartsController < ApplicationController
   def update
     @transaction_part = TransactionPart.find(params[:id])
     if (@transaction_part.update_attributes(params[:transaction_part]))
-      redirect_to :transaction_parts
+      redirect_to "/transactions/#{@transaction_part.transaction_id}/edit"
     else
       flash.alert = "Update Failed!"
       render :edit
@@ -37,13 +37,12 @@ class TransactionPartsController < ApplicationController
   
   def destroy
     @transaction_part = TransactionPart.find(params[:id])
-    @kit_id = @transaction_part.parts_kit_id
     if (@transaction_part.delete)
       flash.notice = "TransactionPart Successfully Deleted"
-      redirect_to "/parts_kits/#{@kit_id}/edit"
+      redirect_to :back
     else
       flash.alert = "Destroy Failed!"
-      redirect_to "/parts_kits/#{@kit_id}/edit"
+      redirect_to :back
     end
   end
 end

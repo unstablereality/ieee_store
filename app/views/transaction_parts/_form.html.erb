@@ -1,0 +1,15 @@
+<%= form_for @transaction_part do |f| %>
+<table>
+  <th>Name</th>
+  <th>Description</th>
+  <th>Quantity</th>
+  <tr>
+    <td><%= @transaction_part.part.name %></td>
+    <td><%= @transaction_part.part.description %></td>
+    <td ><%= f.text_field :part_quantity%></td>
+  </tr>
+</table>
+  <div id='buttons'>  
+    <%= f.submit :class => "submit" %>
+  </div> <br />
+<% end %>
