@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111115020220) do
+ActiveRecord::Schema.define(:version => 20120125223701) do
 
   create_table "kit_components", :force => true do |t|
     t.integer  "parts_kit_id"
@@ -59,13 +59,17 @@ ActiveRecord::Schema.define(:version => 20111115020220) do
     t.integer  "part_quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "current_price"
   end
+
+  add_index "transaction_parts", ["transaction_id", "part_id"], :name => "index_transaction_parts_on_transaction_id_and_part_id", :unique => true
 
   create_table "transactions", :force => true do |t|
     t.string   "student_email"
     t.integer  "transaction_total"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "sale_completed",    :default => false
   end
 
 end

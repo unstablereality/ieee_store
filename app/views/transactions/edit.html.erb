@@ -20,5 +20,11 @@
     <% end %>
   </tr>
 </table>
-
-
+<br />
+<div class = "total">Transaction Total: 
+  <%= @transaction.transaction_total %>
+</div>
+<%= form_for @transaction do |f| %>
+  <div class = "submit_button" ><%= submit_tag(value="Submit") %></div>
+<% end %>
+<%= link_to "Cancel Transaction", @transaction, :method => :delete, :confirm => "Are you sure?" %>

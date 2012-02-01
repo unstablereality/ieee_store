@@ -5,11 +5,18 @@ class TransactionPartsController < ApplicationController
   
   def create
     @transaction_part = TransactionPart.new(params[:transaction_part])
-    if (@transaction_part.save)
-      redirect_to :back
-    else
-      flash.alert = "Save Failed!"
-      render :new
+    begin
+      if (@transaction_part.save)
+        @transaction_part.update_attribute(:current_price, @transaction_part.part.student_price)
+        @quantity = @transaction_part.part.quantity - @transaction_part.part_quantity
+        @transaction_part.part.update_attribute(:quantity, @quantity)
+        redirect_to :back
+      else
+        flash.alert = "Save Failed!"
+        render :new
+      end
+    rescue 
+      flash.alert = "Couldn't Add Item"
     end
   end
   
@@ -37,12 +44,11 @@ class TransactionPartsController < ApplicationController
   
   def destroy
     @transaction_part = TransactionPart.find(params[:id])
-    if (@transaction_part.delete)
+    if (@transaction_part.destroy)
       flash.notice = "TransactionPart Successfully Deleted"
-      redirect_to :back
     else
       flash.alert = "Destroy Failed!"
-      redirect_to :back
     end
+    redirect_to "/transactions/#{@transaction_part.transaction_id}/edit"
   end
 end

@@ -6,9 +6,13 @@
     <th>Part Name</th>
     <th>Description</th>
     <th>Jameco Part No.</th>
-    <th>Quantity</th>
     <th>Price</th>
+    <th>Quantity</th>
   </tr>
   <%= render @transaction.transaction_parts %>
 </table>
-
+<br />
+<div class="total">
+Transaction Total: 
+<%= @transaction.transaction_total %>
+</div>

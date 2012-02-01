@@ -23,12 +23,13 @@ class TransactionsController < ApplicationController
   
   def edit
     @transaction = Transaction.find(params[:id])
+    update_trans_total
   end
   
   def update
     @transaction = Transaction.find(params[:id])
     if (@transaction.update_attributes(params[:transaction]))
-      redirect_to "/transaction/#{@transaction.id}"
+      redirect_to "/transactions/#{@transaction.id}"
     else
       flash.alert = "Update Failed!"
       render :edit
@@ -37,12 +38,21 @@ class TransactionsController < ApplicationController
   
   def destroy
     @transaction = Transaction.find(params[:id])
-    if (@transaction.delete)
+    if (@transaction.destroy)
       flash.notice = "Transaction Successfully Cancelled"
       redirect_to :transactions    
     else
       flash.alert = "Destroy Failed!"
       redirect_to :transactions
     end
+  end
+  
+  private 
+  def update_trans_total
+    @runningtotal = 0
+    @transaction.transaction_parts.each do |p|
+      @runningtotal += p.current_price * p.part_quantity
+    end
+    @transaction.update_attribute(:transaction_total, @runningtotal)
   end
 end
