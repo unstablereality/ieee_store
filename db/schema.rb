@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120125223701) do
+ActiveRecord::Schema.define(:version => 20120202023044) do
 
   create_table "kit_components", :force => true do |t|
     t.integer  "parts_kit_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20120125223701) do
     t.integer  "kit_price"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "deprecated", :default => false
   end
 
   create_table "sessions", :force => true do |t|
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20120125223701) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "current_price"
+    t.integer  "parts_kit_id"
   end
 
   add_index "transaction_parts", ["transaction_id", "part_id"], :name => "index_transaction_parts_on_transaction_id_and_part_id", :unique => true

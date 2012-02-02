@@ -23,12 +23,16 @@ class TransactionsController < ApplicationController
   
   def edit
     @transaction = Transaction.find(params[:id])
+    dropdown
     update_trans_total
   end
   
   def update
     @transaction = Transaction.find(params[:id])
     if (@transaction.update_attributes(params[:transaction]))
+      if params[:commit] == "Complete Sale"
+        @transaction.update_attribute(:sale_completed, true)
+      end
       redirect_to "/transactions/#{@transaction.id}"
     else
       flash.alert = "Update Failed!"
@@ -48,6 +52,18 @@ class TransactionsController < ApplicationController
   end
   
   private 
+  def dropdown
+    @dropdown_list = []
+    
+    PartsKit.where(:deprecated => false).each do |k|
+      @dropdown_list << [k.name, -k.id]
+    end
+    
+    Part.where(:deprecated => false).each do |p|
+      @dropdown_list << [p.name_and_desc, p.id]
+    end
+  end
+  
   def update_trans_total
     @runningtotal = 0
     @transaction.transaction_parts.each do |p|
