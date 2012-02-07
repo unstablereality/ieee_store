@@ -1,9 +1,18 @@
-<tr>
-  <td><%= transaction_part.part.name %></td>
-  <td><%= transaction_part.part.description %></td>
-  <td><%= transaction_part.part.jameco_pn %></td>
-  <td class="money"><%= transaction_part.part.student_price %></td>
-  <td><%= transaction_part.part_quantity %></td>
+<% if transaction_part.part_id %>
+  <tr>
+    <td><%= transaction_part.part.name %></td>
+    <td><%= transaction_part.part.description %></td>
+    <td><%= transaction_part.part.jameco_pn %></td>
+    <td class="money"><%= transaction_part.part.student_price %></td>
+    <td><%= transaction_part.part_quantity %></td>
+<% else %>
+  <tr>
+    <td><%= transaction_part.parts_kit.name %></td>
+    <td></td>
+    <td></td>
+    <td class="money"><%= transaction_part.parts_kit.kit_price %></td>
+    <td><%= transaction_part.part_quantity %></td>
+<% end %>
   <% if current_page?(edit_transaction_url(transaction_part.transaction)) %>
     <td class = "edit_button"><%= link_to "Edit", edit_transaction_part_path(transaction_part) %></td>
   <% end %>

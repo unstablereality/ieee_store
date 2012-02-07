@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120202023044) do
+ActiveRecord::Schema.define(:version => 20111115020220) do
 
   create_table "kit_components", :force => true do |t|
     t.integer  "parts_kit_id"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20120202023044) do
     t.integer  "lot_size"
     t.integer  "student_price"
     t.boolean  "deprecated",       :default => false
+    t.boolean  "sale_completed",   :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -39,9 +40,9 @@ ActiveRecord::Schema.define(:version => 20120202023044) do
   create_table "parts_kits", :force => true do |t|
     t.string   "name"
     t.integer  "kit_price"
+    t.boolean  "deprecated", :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "deprecated", :default => false
   end
 
   create_table "sessions", :force => true do |t|
@@ -57,21 +58,22 @@ ActiveRecord::Schema.define(:version => 20120202023044) do
   create_table "transaction_parts", :force => true do |t|
     t.integer  "transaction_id"
     t.integer  "part_id"
+    t.integer  "parts_kit_id"
     t.integer  "part_quantity"
+    t.integer  "current_price"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "current_price"
-    t.integer  "parts_kit_id"
   end
 
-  add_index "transaction_parts", ["transaction_id", "part_id"], :name => "index_transaction_parts_on_transaction_id_and_part_id", :unique => true
+  add_index "transaction_parts", ["transaction_id", "part_id"], :name => "index_transaction_parts_on_transaction_id_and_part_id"
+  add_index "transaction_parts", ["transaction_id", "parts_kit_id"], :name => "index_transaction_parts_on_transaction_id_and_parts_kit_id"
 
   create_table "transactions", :force => true do |t|
     t.string   "student_email"
     t.integer  "transaction_total"
+    t.boolean  "sale_completed",    :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "sale_completed",    :default => false
   end
 
 end

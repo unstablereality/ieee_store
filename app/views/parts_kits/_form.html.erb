@@ -1,8 +1,6 @@
 <%= form_for @parts_kit do |f| %>
   <p>Kit Name: <%= f.text_field :name %></p>
   <p>Kit Price: <%= f.text_field :kit_price, :class => "money" %></p>
-  <% if current_page?(edit_parts_kit_url(@parts_kit)) %>
   <p>Deprecated: <%= check_box("parts_kit", "deprecated") %></p>
-  <% end %>
   <%= f.submit %>  <%= button_to("Cancel", parts_kits_path) %>
 <% end %>

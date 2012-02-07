@@ -11,6 +11,7 @@ class CreateParts < ActiveRecord::Migration
       t.integer :lot_size
       t.integer :student_price
       t.boolean :deprecated, :default => false
+      t.boolean :sale_completed, :default => false
       
       t.timestamps
     end
