@@ -15,26 +15,23 @@ class TransactionPartsController < ApplicationController
         @transaction_part.update_attribute(:current_price, @transaction_part.part.student_price)
         @quantity = @transaction_part.part.quantity - @transaction_part.part_quantity
         @transaction_part.part.update_attribute(:quantity, @quantity)
-        redirect_to "/transactions/#{@transaction_part.transaction_id}/edit"
+        redirect_to edit_transaction_path(@transaction_part.transaction_id)
       else
         flash.alert = "Save Failed!"
-        redirect_to :new
+        redirect_to edit_transaction_path(@transaction_part.transaction_id)
       end
     else
       @transaction_part.parts_kit_id = -@item_id
         if (@transaction_part.save)
           @transaction_part.update_attribute(:current_price, @transaction_part.parts_kit.kit_price)
-          puts "Current price set to #{@transaction_part.current_price}"
-          @transaction_part.parts_kit.kit_component.each do |kc|
-            puts "Current component is #{kc.name}"
+          @transaction_part.parts_kit.kit_components.each do |kc|
             @quantity = kc.part.quantity - (@transaction_part.part_quantity * kc.part_quantity)
-            puts "Quantity reducing by #{@quantity}"
-            @transaction_part.part.update_attribute(:quantity, @quantity)
+            kc.part.update_attribute(:quantity, @quantity)
           end
-          redirect_to "/transactions/#{@transaction_part.transaction_id}/edit"
+          redirect_to edit_transaction_path(@transaction_part.transaction_id)
         else
           flash.alert = "Save Failed!"
-          redirect_to :new
+          redirect_to edit_transaction_path(@transaction_part.transaction_id)
         end
     end
   end
