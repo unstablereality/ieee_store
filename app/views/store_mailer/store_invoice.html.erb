@@ -1,0 +1,36 @@
+<p>Thank you for your puchase!</p>
+
+<p>Transaction Number: <%= @transaction.id %></p>
+<table id='transaction_parts'>
+  <tr>
+    <th>Part Name</th>
+    <th>Description</th>
+    <th>Part No.</th>
+    <th>Price</th>
+    <th>Quantity</th>
+  </tr>
+  <% @transaction.transaction_parts.each do |t| %>
+    <% if t.part_id %>
+      <tr>
+        <td><%= t.part.name %></td>
+        <td><%= t.part.description %></td>
+        <td><%= t.part.jameco_pn %></td>
+        <td class="money"><%= t.current_price %></td>
+        <td><%= t.part_quantity %></td>
+      </tr>
+    <% else %>
+      <tr>
+        <td><%= t.parts_kit.name %></td>
+        <td></td>
+        <td></td>
+        <td class="money"><%= t.parts_kit.kit_price %></td>
+        <td><%= t.part_quantity %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+<br />
+<div class="total">
+Transaction Total: 
+<%= @transaction.transaction_total %>
+</div>

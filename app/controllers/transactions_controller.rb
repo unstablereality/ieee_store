@@ -31,6 +31,7 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:id])
     if (@transaction.update_attributes(params[:transaction]))
       if params[:commit] == "Complete Sale"
+        StoreMailer.store_invoice(@transaction).deliver
         @transaction.update_attribute(:sale_completed, true)
       end
       redirect_to "/transactions/#{@transaction.id}"

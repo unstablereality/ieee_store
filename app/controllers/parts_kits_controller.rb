@@ -39,11 +39,11 @@ class PartsKitsController < ApplicationController
   def destroy
     @parts_kit = PartsKit.find(params[:id])
     if (@parts_kit.delete)
-      flash.notice = "Part Successfully Deleted"
-      redirect_to :parts_kits    
+      flash.notice = "Kit Successfully Deleted"
+      redirect_to :parts
     else
       flash.alert = "Destroy Failed!"
-      redirect_to :parts_kits
+      redirect_to :parts
     end
   end
   
