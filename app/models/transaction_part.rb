@@ -5,7 +5,8 @@ class TransactionPart < ActiveRecord::Base
   validates :part_quantity, :numericality => true
   before_destroy :return_inventory
   attr_accessor :item_id
-  before_create :populate_item_id, :check_uniqueness
+  before_create :populate_item_id
+  before_create :check_uniqueness
   before_create :check_avail
   before_update :populate_item_id
   
@@ -32,8 +33,11 @@ class TransactionPart < ActiveRecord::Base
     end
     
     def check_uniqueness
-      if TransactionPart.where(:part_id => self.part_id, :transaction_id => self.transaction_id, :parts_kit_id => self.parts_kit_id).count > 0
-        return false
+      @transaction_part = TransactionPart.where(:part_id => self.part_id, :transaction_id => self.transaction_id, :parts_kit_id => self.parts_kit_id).first
+      if @transaction_part
+        @quantity = @transaction_part.part_quantity + self.part_quantity
+        self.part_quantity= @quantity
+        @transaction_part.destroy
       end
     end
     
