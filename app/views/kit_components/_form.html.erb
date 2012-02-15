@@ -1,4 +1,11 @@
 <%= form_for @kit_component do |f| %>
+  <% if @kit_component.errors.any? %>
+    <ul class= "error_frame">
+      <% @kit_component.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
 <table>
   <th>Name</th>
   <th>Description</th>

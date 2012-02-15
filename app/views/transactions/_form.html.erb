@@ -1,4 +1,11 @@
 <%= form_for @transaction do |f| %>
+  <% if @transaction.errors.any? %>
+    <ul class= "error_frame">
+      <% @transaction.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
   
   <p>Student E-mail (required)<%= f.text_field :student_email %></p>
   <%= f.submit %>

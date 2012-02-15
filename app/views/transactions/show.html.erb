@@ -1,5 +1,6 @@
 <h2>Transaction Number: <%= @transaction.id %></h2>
-<h3>Student E-Mail: <%= @transaction.student_email %></h2>
+<h3>Student E-Mail: <%= @transaction.student_email %><br>
+Transaction Complete: <%= @transaction.sale_completed %></h2>
 <%= link_to "Edit Transaction", edit_transaction_path(@transaction) %>
 <table id='transaction_parts'>
   <tr>
@@ -8,11 +9,12 @@
     <th>Jameco Part No.</th>
     <th>Price</th>
     <th>Quantity</th>
+    <th>Total Cost</th>    
   </tr>
   <%= render @transaction.transaction_parts %>
 </table>
 <br />
 <div class="total">
 Transaction Total: 
-<%= @transaction.transaction_total %>
+$<%= @transaction.transaction_total %>
 </div>

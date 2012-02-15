@@ -11,15 +11,15 @@
     <td><%= part.nominal_quantity %></td>
   <% end %>
   <% if current_page?(part_url(part)) %>
-    <td class = "money"><%= part.single_cost%></td>
+    <td class = "money">$<%= part.single_cost%></td>
   <% end %>
   <% if current_page?(part_url(part)) %>
-    <td class = "money"><%= part.lot_cost%></td>
+    <td class = "money">$<%= part.lot_cost%></td>
   <% end %>
   <% if current_page?(part_url(part)) %>
     <td><%= part.lot_size %></td>
   <% end %>
-  <td class = "money"><%= part.student_price%></td>
+  <td class = "money">$<%= part.student_price%></td>
   <td><%= part.deprecated %></td>
   <td class = "edit_button"><%= link_to "Edit", edit_part_path(part) %></td>
   <td class = "delete_button"><%= link_to "Delete", part, :method => :delete, :confirm => "Are you sure?" %>

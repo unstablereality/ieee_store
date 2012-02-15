@@ -10,6 +10,12 @@ class TransactionPart < ActiveRecord::Base
   before_create :check_avail
   before_update :populate_item_id
   
+  composed_of :current_price,
+  :class_name => 'Money',
+  :mapping => [%w(current_price cents)],
+  :constructor => Proc.new { |cents| Money.new(cents || 0, "USD") },
+  :converter => Proc.new { |value| value.respond_to?(:to_money) ? value.to_money : raise(ArgumentError, "Can't convert #{value.class} to Money") }
+  
   protected
     def return_inventory
       puts "Returning Inventory"

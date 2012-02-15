@@ -1,5 +1,13 @@
 <%= form_for @part do |f| %>
+  <% if @part.errors.any? %>
+    <ul class= "error_frame">
+      <% @part.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <table>
+
     <tr>
       <td>Name*</td>
       <td>Description*</td>

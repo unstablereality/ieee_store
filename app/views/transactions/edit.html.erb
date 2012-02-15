@@ -7,6 +7,7 @@
     <th>Jameco Part No.</th>
     <th>Price</th>
     <th>Quantity</th>
+    <th>Total Cost</th>
   </tr>
   <%= render @transaction.transaction_parts %>
   <% if @transaction.sale_completed.eql?(false) %>
@@ -25,7 +26,7 @@
 <br />
 <% if @transaction.sale_completed.eql?(false) %>
   <div class = "total">Transaction Total: 
-    <%= @transaction.transaction_total %>
+    $<%= @transaction.transaction_total %>
   </div>
   <%= form_for @transaction do |f| %>
     <div class = "submit_button" ><%= submit_tag(value="Complete Sale") %></div>

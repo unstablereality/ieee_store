@@ -1,4 +1,11 @@
 <%= form_for @transaction_part do |f| %>
+  <% if @transaction_part.errors.any? %>
+    <ul class= "error_frame">
+      <% @transaction_part.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
 <table>
   <th>Name</th>
   <th>Description</th>

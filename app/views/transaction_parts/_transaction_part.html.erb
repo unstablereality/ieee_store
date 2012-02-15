@@ -1,16 +1,18 @@
 <% if transaction_part.part_id %>
+  <% @line_total = transaction_part.current_price * transaction_part.part_quantity %>
   <tr>
     <td><%= transaction_part.part.name %></td>
     <td><%= transaction_part.part.description %></td>
     <td><%= transaction_part.part.jameco_pn %></td>
-    <td class="money"><%= transaction_part.part.student_price %></td>
+    <td class="money">$<%= transaction_part.current_price %></td>
     <td><%= transaction_part.part_quantity %></td>
+    <td><%= @line_total %></td>
 <% else %>
   <tr>
     <td><%= transaction_part.parts_kit.name %></td>
     <td></td>
     <td></td>
-    <td class="money"><%= transaction_part.parts_kit.kit_price %></td>
+    <td class="money">$<%= transaction_part.parts_kit.kit_price %></td>
     <td><%= transaction_part.part_quantity %></td>
 <% end %>
   <% if current_page?(edit_transaction_url(transaction_part.transaction)) %>

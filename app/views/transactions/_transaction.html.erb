@@ -4,6 +4,6 @@
     <td><%= transaction.student_email %></td>
   <% end %>
   <% if current_page?(:action=>"index", :controller=>"transactions") %>
-    <td><%= transaction.transaction_total %></td>
+    <td>$<%= transaction.transaction_total %></td>
   <% end %>
 </tr>

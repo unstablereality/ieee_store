@@ -1,4 +1,11 @@
 <%= form_for @parts_kit do |f| %>
+  <% if @parts_kit.errors.any? %>
+    <ul class= "error_frame">
+      <% @parts_kit.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <p>Kit Name: <%= f.text_field :name %></p>
   <p>Kit Price: <%= f.text_field :kit_price, :class => "money" %></p>
   <% unless current_page?(new_parts_kit_url) %>

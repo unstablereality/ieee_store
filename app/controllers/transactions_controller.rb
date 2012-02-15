@@ -66,7 +66,7 @@ class TransactionsController < ApplicationController
   end
   
   def update_trans_total
-    @runningtotal = 0
+    @runningtotal = Money.new(0, "USD")
     @transaction.transaction_parts.each do |p|
       @runningtotal += p.current_price * p.part_quantity
     end
