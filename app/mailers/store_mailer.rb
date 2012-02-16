@@ -8,6 +8,6 @@ class StoreMailer < ActionMailer::Base
   
   #stub for password reset email once authentication is added
   def password_reset
-  
+    
   end
 end

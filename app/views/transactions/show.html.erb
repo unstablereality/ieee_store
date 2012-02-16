@@ -1,7 +1,10 @@
 <h2>Transaction Number: <%= @transaction.id %></h2>
-<h3>Student E-Mail: <%= @transaction.student_email %><br>
-Transaction Complete: <%= @transaction.sale_completed %></h2>
-<%= link_to "Edit Transaction", edit_transaction_path(@transaction) %>
+<h3>Student E-Mail: <%= @transaction.student_email %><br></h2>
+  <% if @transaction.sale_completed.eql?(true)%>
+    <%= link_to "Edit Transaction", edit_transaction_path(@transaction) %>
+  <% else %>
+    <%= link_to "Resume Suspended Transaction", edit_transaction_path(@transaction) %>
+  <% end %>
 <table id='transaction_parts'>
   <tr>
     <th>Part Name</th>
@@ -13,7 +16,6 @@ Transaction Complete: <%= @transaction.sale_completed %></h2>
   </tr>
   <%= render @transaction.transaction_parts %>
 </table>
-<br />
 <div class="total">
 Transaction Total: 
 $<%= @transaction.transaction_total %>

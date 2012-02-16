@@ -4,16 +4,39 @@
   <title>IEEE Parts Store</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
+  
+  <!-- media queries css --> 
+  <link href="media-queries.css" rel="stylesheet" type="text/css"> 
+ 
+  <!-- html5.js for IE less than 9 --> 
+  <!--[if lt IE 9]>
+	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]--> 
+ 
+  <!-- css3-mediaqueries.js for IE less than 9 --> 
+  <!--[if lt IE 9]>
+	  <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+  <![endif]--> 
+  
   <%= csrf_meta_tags %>
 </head>
 <body>
+<header id="header">
+  <nav>
+    <ul id="main-nav" class="clearfix">
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "Transaction History", transactions_path %></li>
+      <li><%= link_to "Inventory Management", parts_path %></li>
+    </ul>
+  </nav>
+</header>
 <div class = "flash_message">
   <% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, :class => "flash_#{name}" %>
+    <%= content_tag :div, msg, :class => "flash_#{name}" %>
   <% end %>
-  <%= link_to "Home", root_path %>
 </div>
-<%= yield %>
-
+<div id = "bodywrapper">
+  <%= yield %>
+</div>
 </body>
 </html>

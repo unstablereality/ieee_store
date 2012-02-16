@@ -6,4 +6,9 @@
   <% if current_page?(:action=>"index", :controller=>"transactions") %>
     <td>$<%= transaction.transaction_total %></td>
   <% end %>
+  <% if transaction.sale_completed.eql?(true)%>
+    <td>Yes</td>
+  <% else %>
+    <td>No</td>
+  <% end %>
 </tr>
