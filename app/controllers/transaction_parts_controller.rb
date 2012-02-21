@@ -1,4 +1,7 @@
 class TransactionPartsController < ApplicationController
+
+  before_filter :is_shopkeeper
+
   def new
     @transaction_part = TransactionPart.new
   end

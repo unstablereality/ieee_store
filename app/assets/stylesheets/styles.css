@@ -107,7 +107,7 @@ GENERAL STYLING
 *************************************************************************************/
 
 body {
-	background: #0d1424;
+	background: #3f3f3f;
 	font: .81em/150% Arial, Helvetica, sans-serif;
 	color: #FFFFFF;
 }
@@ -136,8 +136,8 @@ li {
 	padding: 0;
 }
 h1, h2, h3, h4, h5, h6 {
-	text-shadow: -3px -3px 0 rgba(0,0,0,1);
-  margin: 3px;
+	text-shadow: -2px -2px 0 rgba(0,0,0,1);
+  margin: 3px 3px 10px 3px
 }
 
 #show_part{
@@ -155,14 +155,14 @@ table{
 }
 
 th{
-  background-color: #202020;
+  background-color: #383838;
   border: 0;
   padding: 2px;
   text-align: center;
 }
 
 td{
-  background-color: #383838;
+  background-color: #212121;
   border: 0;
   padding: 2px;
   text-align: center;
@@ -170,6 +170,11 @@ td{
 
 .buttons{
   float:left;
+}
+
+#logout{
+  border: none;
+  float: right;
 }
 
 .submit{

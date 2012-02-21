@@ -1,5 +1,8 @@
 class PartsKitsController < ApplicationController
+  
+  before_filter :is_admin
   before_filter :get_available_parts, :only => [:new,:edit]
+  
   def new
     @parts_kit = PartsKit.new
   end

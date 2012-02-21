@@ -1,4 +1,7 @@
 class KitComponentsController < ApplicationController
+  
+  before_filter :is_admin
+
   def new
     @kit_component = KitComponent.new
   end

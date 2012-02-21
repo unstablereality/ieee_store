@@ -1,7 +1,9 @@
 <h2>Transaction Number: <%= @transaction.id %></h2>
 <h3>Student E-Mail: <%= @transaction.student_email %><br></h2>
   <% if @transaction.sale_completed.eql?(true)%>
-    <%= link_to "Edit Transaction", edit_transaction_path(@transaction) %>
+    <% if @current_user.security == "administrator" %>
+      <%= link_to "Edit Transaction", edit_transaction_path(@transaction) %>
+    <% end %>
   <% else %>
     <%= link_to "Resume Suspended Transaction", edit_transaction_path(@transaction) %>
   <% end %>

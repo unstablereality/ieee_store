@@ -1,4 +1,7 @@
 class PartsController < ApplicationController
+  
+  before_filter :is_admin
+
   def new
     @part = Part.new
   end

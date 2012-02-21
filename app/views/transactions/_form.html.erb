@@ -7,6 +7,7 @@
     </ul>
   <% end %>
   
-  <p>Student E-mail (required)<%= f.text_field :student_email %></p>
+  <%= f.label "Student E-mail (required)" %>
+  <div class= "field" ><%= f.text_field :student_email %></div>
   <%= f.submit %>
 <% end %>

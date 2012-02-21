@@ -27,6 +27,9 @@
       <li><%= link_to "Home", root_path %></li>
       <li><%= link_to "Transaction History", transactions_path %></li>
       <li><%= link_to "Inventory Management", parts_path %></li>
+      <% if session[:user_id] %>
+        <li><%= link_to "Log Out", new_session_path, :method => :delete, :confirm => "Are you sure?", :class => "logout" %></li>
+      <% end %>
     </ul>
   </nav>
 </header>
