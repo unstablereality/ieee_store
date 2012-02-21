@@ -8,19 +8,19 @@ class Part < ActiveRecord::Base
 
   composed_of :single_cost,
   :class_name => 'Money',
-  :mapping => [%w(single_cost cents)],
+  :mapping => [%w(single_cost cents), %w(currency currency_as_string)],
   :constructor => Proc.new { |cents| Money.new(cents || 0, "USD") },
   :converter => Proc.new { |value| value.respond_to?(:to_money) ? value.to_money : raise(ArgumentError, "Can't convert #{value.class} to Money") }
   
   composed_of :lot_cost,
   :class_name => 'Money',
-  :mapping => [%w(lot_cost cents)],
+  :mapping => [%w(lot_cost cents), %w(currency currency_as_string)],
   :constructor => Proc.new { |cents| Money.new(cents || 0, "USD") },
   :converter => Proc.new { |value| value.respond_to?(:to_money) ? value.to_money : raise(ArgumentError, "Can't convert #{value.class} to Money") }
   
   composed_of :student_price,
   :class_name => 'Money',
-  :mapping => [%w(student_price cents)],
+  :mapping => [%w(student_price cents), %w(currency currency_as_string)],
   :constructor => Proc.new { |cents| Money.new(cents || 0, "USD") },
   :converter => Proc.new { |value| value.respond_to?(:to_money) ? value.to_money : raise(ArgumentError, "Can't convert #{value.class} to Money") }
   

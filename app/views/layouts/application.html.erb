@@ -25,10 +25,12 @@
   <nav>
     <ul id="main-nav" class="clearfix">
       <li><%= link_to "Home", sessions_path %></li>
-      <li><%= link_to "Transaction History", transactions_path %></li>
-      <% if @current_user.security == "Administrator" %>
-        <li><%= link_to "Inventory Management", parts_path %></li>
-        <li><%= link_to "User Administration", users_path %></li>
+      <% if @current_user %>
+        <li><%= link_to "Transaction History", transactions_path %></li>
+        <% if @current_user.security == "Administrator" %>
+          <li><%= link_to "Inventory Management", parts_path %></li>
+          <li><%= link_to "User Administration", users_path %></li>
+        <% end %>
       <% end %>
       <% if session[:user_id] %>
         <li><%= link_to "User Profile", edit_user_path(session[:user_id]) %></li>

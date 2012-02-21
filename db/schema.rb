@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120221153536) do
+ActiveRecord::Schema.define(:version => 20120221230539) do
 
   create_table "kit_components", :force => true do |t|
     t.integer  "parts_kit_id"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20120221153536) do
     t.boolean  "sale_completed",   :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "currency"
   end
 
   create_table "parts_kits", :force => true do |t|
