@@ -135,10 +135,18 @@ li {
 	margin: 0 0 .5em 0;
 	padding: 0;
 }
+
+/* headings */
 h1, h2, h3, h4, h5, h6 {
 	text-shadow: -2px -2px 0 rgba(0,0,0,1);
   margin: 3px 3px 10px 3px
 }
+
+.field {
+  margin-bottom: 8px
+}
+
+.flash_message {margin: 3px 3px 10px 3px}
 
 #show_part{
 

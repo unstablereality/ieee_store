@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120221015457) do
+ActiveRecord::Schema.define(:version => 20120221153536) do
 
   create_table "kit_components", :force => true do |t|
     t.integer  "parts_kit_id"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20120221015457) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "security",        :default => "shopkeeper"
+    t.string   "name"
   end
 
 end

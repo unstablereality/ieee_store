@@ -1,0 +1,12 @@
+<div class ='list'>
+  <h1>User Administration</h1>  
+  <%= link_to "Add a New User", new_user_path %><br>
+  <table border=2>
+  <tr>
+    <th>Student Name</th>
+    <th>User Name</th>
+    <th>Security Level</th>
+  </tr>
+    <%= render @users %>
+  </table>
+</div>

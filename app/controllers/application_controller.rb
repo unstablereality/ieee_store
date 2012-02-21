@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   end
   
   def is_admin
-    unless get_security.eql?("administrator")
+    unless get_security.eql?("Administrator")
       if @current_user
         flash.notice = "Insufficient Priveleges.  Please contact an administrator."
         redirect_to sessions_path
@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   end
   
   def is_shopkeeper
-    unless get_security.eql?("shopkeeper") || get_security.eql?("administrator")
+    unless get_security.eql?("Shopkeeper") || get_security.eql?("Administrator")
       if @current_user
         flash.notice = "Insufficient Priveleges.  Please contact an administrator."
         redirect_to sessions_path

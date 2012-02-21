@@ -24,21 +24,25 @@
 <header id="header">
   <nav>
     <ul id="main-nav" class="clearfix">
-      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "Home", sessions_path %></li>
       <li><%= link_to "Transaction History", transactions_path %></li>
-      <li><%= link_to "Inventory Management", parts_path %></li>
+      <% if @current_user.security == "Administrator" %>
+        <li><%= link_to "Inventory Management", parts_path %></li>
+        <li><%= link_to "User Administration", users_path %></li>
+      <% end %>
       <% if session[:user_id] %>
+        <li><%= link_to "User Profile", edit_user_path(session[:user_id]) %></li>
         <li><%= link_to "Log Out", new_session_path, :method => :delete, :confirm => "Are you sure?", :class => "logout" %></li>
       <% end %>
     </ul>
   </nav>
 </header>
-<div class = "flash_message">
-  <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, :class => "flash_#{name}" %>
-  <% end %>
-</div>
 <div id = "bodywrapper">
+  <div class = "flash_message">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :class => "flash_#{name}" %>
+    <% end %>
+  </div>
   <%= yield %>
 </div>
 </body>
