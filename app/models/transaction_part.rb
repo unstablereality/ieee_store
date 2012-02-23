@@ -49,7 +49,7 @@ class TransactionPart < ActiveRecord::Base
     
     def check_avail
       if self.item_id > 0
-        if (self.part.quantity - self.part_quantity) <= 0
+        if (self.part.quantity - self.part_quantity) < 0
           raise Errors::InsufficientSupplyError, "ERROR: Tried to purchase #{self.part_quantity} #{self.part.name.pluralize} but there are only #{self.part.quantity} in stock."
         end
       else
