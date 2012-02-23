@@ -1,4 +1,4 @@
-<h1>Sign Up</h1>
+<h1>Create New User</h1>
 
 <%= form_for @user do |f| %>
   <% if @user.errors.any? %>
@@ -11,16 +11,23 @@
       </ul>
     </div>
   <% end %>
+  <div class = "dropdown">
+    <label>Security Level</label><%= select(:user, :security, options_for_select(["Shopkeeper", "Administrator"], @user.security)) %>
+  </div>
   <div class="field">
-    <%= f.label :email %>
+    <h3><%= f.label :name %></h3>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <h3><%= f.label :email %></h3>
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :password %>
+    <h3><%= f.label :password %></h3>
     <%= f.password_field :password %>
   </div>
   <div class="field">
-    <%= f.label :password_confirmation %>
+    <h3><%= f.label :password_confirmation %></h3>
     <%= f.password_field :password_confirmation %>
   </div>
   <div class="actions"><%= f.submit %></div>

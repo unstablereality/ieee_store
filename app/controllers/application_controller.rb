@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   force_ssl
   before_filter :current_user
 
+  rescue_from Errors::InsufficientSupplyError, :with => :supply_error
+  
   private
 
   def current_user
@@ -38,6 +40,11 @@ class ApplicationController < ActionController::Base
         redirect_to new_session_path
       end
     end
+  end
+  
+  def supply_error(error)
+    flash.notice = error.message
+    redirect_to :back
   end
 
   helper_method :current_user

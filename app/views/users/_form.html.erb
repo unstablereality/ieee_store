@@ -6,10 +6,9 @@
       <% end %>
     </ul>
   <% end %>
-  <div class = "field" >
+  <div class = "dropdown" >
     <% if @current_user.security == "Administrator" %>
-      <h3>Security Level</h3>
-      <%= select(:user, :security, options_for_select(["Shopkeeper", "Administrator"], @user.security)) %>
+      <label><h3>Security Level</h3></label><%= select(:user, :security, options_for_select(["Shopkeeper", "Administrator"], @user.security)) %>
     <% end %>
   </div>
   <div class = "field" >

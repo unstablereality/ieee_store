@@ -1,6 +1,6 @@
 <tr>
   <td><%= link_to_unless_current parts_kit.name, parts_kit %></td>
-  <td class = "money">$<%= parts_kit.kit_price %></td>
+  <td class = "money">$<%= parts_kit.display_kit_price %></td>
   <% if parts_kit.deprecated.eql?(true)%>
     <td>Yes</td>
   <% else %>

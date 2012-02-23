@@ -6,10 +6,19 @@
       <% end %>
     </ul>
   <% end %>
-  <p>Kit Name: <%= f.text_field :name %></p>
-  <p>Kit Price: <%= f.text_field :kit_price, :class => "money" %></p>
+  <div class = "field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class = "field">
+    <%= f.label :kit_price %>
+    <%= f.text_field :display_kit_price, :class => "money" %>
+  </div>
   <% unless current_page?(new_parts_kit_url) %>
-    <p>Deprecated: <%= check_box("parts_kit", "deprecated") %></p>
+    <div class = "field">
+      <%= f.label :deprecated %>
+      <%= check_box("parts_kit", "deprecated") %>
+    </div>
   <% end %>
   <%= f.submit %>  <%= button_to("Cancel", parts_kits_path) %>
 <% end %>

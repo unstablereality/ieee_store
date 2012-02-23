@@ -11,15 +11,15 @@
     <td><%= part.nominal_quantity %></td>
   <% end %>
   <% if current_page?(part_url(part)) %>
-    <td class = "money">$<%= part.single_cost%></td>
+    <td class = "money">$<%= part.display_single_cost%></td>
   <% end %>
   <% if current_page?(part_url(part)) %>
-    <td class = "money">$<%= part.lot_cost%></td>
+    <td class = "money">$<%= part.display_lot_cost%></td>
   <% end %>
   <% if current_page?(part_url(part)) %>
     <td><%= part.lot_size %></td>
   <% end %>
-  <td class = "money">$<%= part.student_price%></td>
+  <td class = "money">$<%= part.display_student_price%></td>
   <% if part.deprecated.eql?(true)%>
     <td>Yes</td>
   <% else %>

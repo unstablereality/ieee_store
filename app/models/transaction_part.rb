@@ -10,11 +10,11 @@ class TransactionPart < ActiveRecord::Base
   before_create :check_avail
   before_update :populate_item_id
   
-  composed_of :current_price,
-  :class_name => 'Money',
-  :mapping => [%w(current_price cents)],
-  :constructor => Proc.new { |cents| Money.new(cents || 0, "USD") },
-  :converter => Proc.new { |value| value.respond_to?(:to_money) ? value.to_money : raise(ArgumentError, "Can't convert #{value.class} to Money") }
+  composed_of :display_current_price,
+    :class_name => 'Money',
+    :mapping => [%w(current_price cents)],
+    :constructor => Proc.new { |cents| Money.new(cents || 0, "USD") },
+    :converter => Proc.new { |value| value.respond_to?(:to_money) ? value.to_money : raise(ArgumentError, "Can't convert #{value.class} to Money") }
   
   protected
     def return_inventory
@@ -50,13 +50,28 @@ class TransactionPart < ActiveRecord::Base
     def check_avail
       if self.item_id > 0
         if (self.part.quantity - self.part_quantity) <= 0
-          return false
+          raise Errors::InsufficientSupplyError, "ERROR: Tried to purchase #{self.part_quantity} #{self.part.name.pluralize} but there are only #{self.part.quantity} in stock."
         end
       else
         self.parts_kit.kit_components.each do |kc|
-          if (kc.part.quantity - (self.part_quantity * kc.part_quantity)) <= 0
-            return false
+          @existing_kit_quantity = kc.part.quantity / kc.part_quantity
+          @trans_quantity = self.part_quantity
+          @quantity = @existing_kit_quantity - @trans_quantity
+          if (@quantity) < 0
+            if (@low_qty)
+              if (@quantity < @low_qty)
+                @low_qty = @quantity
+                @component = kc
+              end
+            else
+              @low_qty = @quantity
+              @component = kc
+            end
           end
+        end
+        if (@low_qty)
+          @kit_quantity = @component.part.quantity / @component.part_quantity
+          raise Errors::InsufficientSupplyError, "ERROR: Tried to purchase #{self.part_quantity} #{self.parts_kit.name.pluralize} but there are only #{@component.part.quantity} #{@component.part.name.pluralize} (#{@kit_quantity} #{self.parts_kit.name.pluralize}) in stock."
         end
       end
     end

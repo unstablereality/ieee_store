@@ -26,6 +26,7 @@
     <ul id="main-nav" class="clearfix">
       <li><%= link_to "Home", sessions_path %></li>
       <% if @current_user %>
+        <li><%= link_to "New Sale", new_transaction_path %></li>
         <li><%= link_to "Transaction History", transactions_path %></li>
         <% if @current_user.security == "Administrator" %>
           <li><%= link_to "Inventory Management", parts_path %></li>

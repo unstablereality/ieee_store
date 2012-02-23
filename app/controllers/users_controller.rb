@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       #placeholder redirect. Need to redirect to users index when it exists
-      redirect_to :back, :notice => "User created!"
+      redirect_to :users, :notice => "User created!"
     else
       render "new"
     end
@@ -31,10 +31,10 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if (@user.update_attributes(params[:user]))
-      if @current_user == "Administrator"
+      flash.notice = "User Profile Successfully Updated"
+      if (@current_user.security == "Administrator")
         redirect_to :users
       else
-        flash.notice = "Password Successfully Changed"
         redirect_to sessions_path
       end
     else
@@ -44,6 +44,13 @@ class UsersController < ApplicationController
   end
   
   def destroy
-  
+    @user = User.find(params[:id])
+    if (@user.delete)
+      flash.notice = "User Successfully Deleted"
+      redirect_to :users      
+    else
+      flash.alert = "User Deletion Failed"
+      redirect_to :users
+    end
   end
 end

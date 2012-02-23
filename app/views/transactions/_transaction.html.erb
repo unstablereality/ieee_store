@@ -4,7 +4,7 @@
     <td><%= transaction.student_email %></td>
   <% end %>
   <% if current_page?(:action=>"index", :controller=>"transactions") %>
-    <td>$<%= transaction.transaction_total %></td>
+    <td>$<%= transaction.display_transaction_total %></td>
   <% end %>
   <% if transaction.sale_completed.eql?(true)%>
     <td>Yes</td>
