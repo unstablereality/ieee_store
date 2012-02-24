@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
   
   def index
-    @users = User.all
+    @users = User.find(:all, :conditions => ["id NOT IN (1)"])
   end
   
   def show

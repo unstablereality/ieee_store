@@ -56,12 +56,16 @@ IeeeStore::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
   
-  resources :parts
-  resources :parts_kits
-  resources :kit_components
-  resources :transactions
-  resources :sessions
-  resources :transaction_parts
-  resources :users
-  root :to => 'sessions#new'
+  #scope "/store" do
+
+    resources :parts
+    resources :parts_kits
+    resources :kit_components
+    resources :transactions
+    resources :sessions
+    resources :transaction_parts
+    resources :users
+    root :to => 'sessions#new'
+    
+  #end
 end

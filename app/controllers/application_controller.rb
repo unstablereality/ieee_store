@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  force_ssl
   before_filter :current_user
 
   rescue_from Errors::InsufficientSupplyError, :with => :supply_error

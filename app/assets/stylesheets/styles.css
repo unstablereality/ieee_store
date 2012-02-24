@@ -211,13 +211,11 @@ td{
 }
 
 .delete_button{
-  background-image: delete-button.png;
   background-color: transparent;
   border: none;
 }
 
 .edit_button{
-  background-image: edit-button.png;
   background-color: transparent;
   border: none;
 }
