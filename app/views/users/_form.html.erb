@@ -6,27 +6,29 @@
       <% end %>
     </ul>
   <% end %>
-  <div class = "dropdown" >
-    <% if @current_user.security == "Administrator" %>
-      <label><h3>Security Level</h3></label><%= select(:user, :security, options_for_select(["Shopkeeper", "Administrator"], @user.security)) %>
-    <% end %>
+  <% unless @current_user.id == 1 %>
+    <div class = "dropdown" >
+      <% if @current_user.security == "Administrator" %>
+        <label class = "user_edit"><h3>Security Level</h3></label>
+        <%= select(:user, :security, options_for_select(["Shopkeeper", "Administrator"], @user.security)) %>
+      <% end %>
+    </div>
+    <div class = "field" >
+      <h3><%= f.label :name, :class => "user_edit" %></h3>
+      <%= f.text_field :name, :class => "user_edit" %>
+    </div>
+    <div class = "field" >
+      <h3><%= f.label :email, :class => "user_edit" %></h3>
+      <%= f.text_field :email, :class => "user_edit" %>
+    </div>
+  <% end %>
+   <div class = "field" >  
+    <h3><%= f.label :password, :class => "user_edit" %></h3>
+    <%= f.password_field :password, :class => "user_edit" %>
   </div>
   <div class = "field" >
-    <h3><%= f.label :name %></h3>
-    <%= f.text_field :name %>
+    <h3><%= f.label :password_confirmation, :class => "user_edit" %></h3>
+    <%= f.password_field :password_confirmation, :class => "user_edit" %>
   </div>
-  <div class = "field" >
-    <h3><%= f.label :email %></h3>
-    <%= f.text_field :email %>
-  </div>
-    <div class = "field" >  
-    <h3><%= f.label :password %></h3>
-    <%= f.password_field :password %>
-  </div>
-  <div class = "field" >
-    <h3><%= f.label :password_confirmation %></h3>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="buttons"><%= f.submit %></div>
+  <%= f.submit :class => "buttons" %>
 <% end %>
-

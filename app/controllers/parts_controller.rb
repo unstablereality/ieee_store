@@ -5,6 +5,7 @@ class PartsController < ApplicationController
   def new
     @part = Part.new
   end
+  
   def create
     @part = Part.new(params[:part])
     if (@part.save)
@@ -14,16 +15,20 @@ class PartsController < ApplicationController
       render :new
     end
   end
+  
   def show
     @part = Part.find(params[:id])
   end
+  
   def index
     @parts = Part.all
     @parts_kits = PartsKit.all
   end
+  
   def edit
     @part = Part.find(params[:id])
   end
+  
   def update
     @part = Part.find(params[:id])
     if (@part.update_attributes(params[:part]))
@@ -33,6 +38,7 @@ class PartsController < ApplicationController
       render :edit
     end
   end
+  
   def destroy
     @part = Part.find(params[:id])
     if (@part.delete)

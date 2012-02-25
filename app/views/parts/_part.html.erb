@@ -1,8 +1,6 @@
 <tr>
   <td><%= link_to_unless_current part.name, part %></td>
-  <% if current_page?(part_url(part)) %>
-    <td><%= part.description %></td>
-  <% end %>
+  <td><%= part.description %></td>
   <% if current_page?(part_url(part)) %>
     <td><%= part.jameco_pn %></td>
   <% end %>
@@ -25,6 +23,5 @@
   <% else %>
     <td>No</td>
   <% end %>
-  <td class = "edit_button"><%= link_to "Edit", edit_part_path(part) %></td>
-  <td class = "delete_button"><%= link_to "Delete", part, :method => :delete, :confirm => "Are you sure?" %>
+  <td class = "edit_button"><%= link_to image_tag("edit-icon.png"), edit_part_path(part) %>  <%= link_to image_tag("delete-button.png"), part, :method => :delete, :confirm => "Are you sure?", :title => "Delete" %></td>
 </tr>

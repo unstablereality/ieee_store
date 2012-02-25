@@ -3,6 +3,9 @@ class SessionsController < ApplicationController
   before_filter :is_shopkeeper, :only => :index
 
   def new
+    if (@current_user)
+      redirect_to sessions_path
+    end
   end
   
   #session created redirects to session show, basic landing page

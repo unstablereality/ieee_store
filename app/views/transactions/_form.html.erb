@@ -8,6 +8,6 @@
   <% end %>
   
   <%= f.label "Student E-mail (required)" %>
-  <div class= "field" ><%= f.text_field :student_email %></div>
-  <%= f.submit %>
+  <%= f.text_field :student_email, :id => "new_trans_field" %>
+  <div><%= f.submit :class => "buttons" %></div>
 <% end %>

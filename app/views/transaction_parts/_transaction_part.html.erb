@@ -17,9 +17,9 @@
     <td>$<%= @line_total.to_money %></td>
 <% end %>
   <% if current_page?(edit_transaction_url(transaction_part.transaction)) %>
-    <td class = "edit_button"><%= link_to "Edit", edit_transaction_part_path(transaction_part) %></td>
+    <td class = "edit_button"><%= link_to image_tag("edit-icon.png"), edit_transaction_part_path(transaction_part) %></td>
   <% end %>
   <% if current_page?(edit_transaction_url(transaction_part.transaction)) %>
-    <td class = "delete_button"><%= link_to "Delete", transaction_part, :method => :delete, :confirm => "Are you sure?" %>
+    <td class = "edit_button"><%= link_to image_tag("delete-button.png"), transaction_part, :method => :delete, :confirm => "Are you sure?" %>
   <% end %>
 </tr>

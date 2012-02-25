@@ -6,12 +6,11 @@ class CreateParts < ActiveRecord::Migration
       t.string :jameco_pn
       t.integer :quantity
       t.integer :nominal_quantity
-      t.integer :single_cost
-      t.integer :lot_cost
+      t.integer :single_cost, :default => 0
+      t.integer :lot_cost, :default => 0
       t.integer :lot_size
-      t.integer :student_price
+      t.integer :student_price, :default => 0
       t.boolean :deprecated, :default => false
-      t.boolean :sale_completed, :default => false
       
       t.timestamps
     end

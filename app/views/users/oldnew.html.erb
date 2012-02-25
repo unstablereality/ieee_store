@@ -1,0 +1,34 @@
+<h1>Create New User</h1>
+
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_frame">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @user.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class = "dropdown">
+    <label>Security Level</label><%= select(:user, :security, options_for_select(["Shopkeeper", "Administrator"], @user.security)) %>
+  </div>
+  <div class = "field" >
+    <h3><%= f.label :name, :class => "user_edit" %></h3>
+    <%= f.text_field :name, :class => "user_edit" %>
+  </div>
+  <div class = "field" >
+    <h3><%= f.label :email, :class => "user_edit" %></h3>
+    <%= f.text_field :email, :class => "user_edit" %>
+  </div>
+  <div class = "field" >  
+    <h3><%= f.label :password, :class => "user_edit" %></h3>
+    <%= f.password_field :password, :class => "user_edit" %>
+  </div>
+  <div class = "field" >
+    <h3><%= f.label :password_confirmation, :class => "user_edit" %></h3>
+    <%= f.password_field :password_confirmation, :class => "user_edit" %>
+  </div>
+  <div class="buttons"><%= f.submit %></div>
+<% end %>

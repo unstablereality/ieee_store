@@ -8,7 +8,7 @@
   <% end %>
   <div class = "field">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :class => "new_kit" %>
   </div>
   <div class = "field">
     <%= f.label :kit_price %>
@@ -20,5 +20,6 @@
       <%= check_box("parts_kit", "deprecated") %>
     </div>
   <% end %>
-  <%= f.submit %>  <%= button_to("Cancel", parts_kits_path) %>
+  <%= f.submit :class => "buttons" %>  
 <% end %>
+<%= submit_tag 'Cancel', :name => 'parts_kits[cancel]'%> 

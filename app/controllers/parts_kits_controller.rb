@@ -2,6 +2,7 @@ class PartsKitsController < ApplicationController
   
   before_filter :is_admin
   before_filter :get_available_parts, :only => [:new,:edit]
+  #before_filter :check_for_cancel, :only => [:create, :edit]
   
   def new
     @parts_kit = PartsKit.new
@@ -32,7 +33,7 @@ class PartsKitsController < ApplicationController
   def update
     @parts_kit = PartsKit.find(params[:id])
     if (@parts_kit.update_attributes(params[:parts_kit]))
-      redirect_to "/parts_kits/#{@parts_kit.id}"
+      redirect_to "#{parts_kits_path}/#{@parts_kit.id}"
     else
       flash.alert = "Update Failed!"
       render :edit
@@ -56,4 +57,12 @@ class PartsKitsController < ApplicationController
         [p.id, "#{p.jameco_pn} #{p.name} #{p.description}"]
       end
     end
+    
+    def check_for_cancel 
+      if params[:parts_kits].include?("cancel")
+      params[:user_group].include?( 'Cancel' )
+        puts "cancelling"
+        redirect_to :parts
+      end 
+    end 
 end

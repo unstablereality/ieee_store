@@ -34,10 +34,10 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:id])
     if (@transaction.update_attributes(params[:transaction]))
       if params[:commit] == "Complete Sale"
-        #StoreMailer.store_invoice(@transaction).deliver
+        StoreMailer.store_invoice(@transaction).deliver
         @transaction.update_attribute(:sale_completed, true)
       end
-      redirect_to "/transactions/#{@transaction.id}"
+      redirect_to "#{transactions_path}/#{@transaction.id}"
     else
       flash.alert = "Update Failed!"
       render :edit

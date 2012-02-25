@@ -2,6 +2,6 @@
   <td><%= user.name %></td>
   <td><%= user.email %></td>
   <td><%= user.security %></td>
-  <td class = "edit_button"><%= link_to "Edit", edit_user_path(user) %></td>
-  <td class = "delete_button"><%= link_to "Delete", user, :method => :delete, :confirm => "Are you sure?" %>
+  <td class = "edit-button"><%= link_to image_tag("edit-icon.png"), edit_user_path(user) %></td>
+  <td class = "delete-button"><%= link_to image_tag("delete-button.png"), user, :method => :delete, :confirm => "Are you sure?" %>
 </tr>

@@ -6,6 +6,5 @@
   <% else %>
     <td>No</td>
   <% end %>
-  <td class = "edit_button"><%= link_to "Edit", edit_parts_kit_path(parts_kit) %></td>
-  <td class = "delete_button"><%= link_to "Delete", parts_kit, :method => :delete, :confirm => "Are you sure?" %>
+  <td class = "edit_button"><%= link_to image_tag("edit-icon.png"), edit_parts_kit_path(parts_kit) %>  <%= link_to image_tag("delete-button.png"), parts_kit, :method => :delete, :confirm => "Are you sure?" %>
 </tr>

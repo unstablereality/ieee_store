@@ -1,7 +1,7 @@
 <h2>Transaction Number: <%= @transaction.id %></h2>
 <h3>Student E-Mail: <%= @transaction.student_email %><br></h2>
   <% if @transaction.sale_completed.eql?(true)%>
-    <% if @current_user.security == "administrator" %>
+    <% if @current_user.security == "Administrator" %>
       <%= link_to "Edit Transaction", edit_transaction_path(@transaction) %>
     <% end %>
   <% else %>
