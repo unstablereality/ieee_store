@@ -183,11 +183,11 @@ input {
   margin: 0px 0px 20px 0px;
 }
 
-input.user_edit {
-  width: 300px;
+input.user {
+  width: 200px;
 }
 
-label.user_edit{
+label.user{
   width: 150px;
   float: left;
 }
