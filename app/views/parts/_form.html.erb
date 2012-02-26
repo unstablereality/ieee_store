@@ -32,7 +32,8 @@
       <td><%= check_box("part", "deprecated") %></td>
     </tr>
   </table>
-  <%= f.submit :class => "buttons" %>  <%= button_to("Cancel", parts_path, :class => "buttons") %>
+  <%= f.submit :class => "buttons" %>
+<% end %>
+  <%= button_to("Cancel", parts_path, :method => :get, :class => "buttons") %>
   <br />
   <p>* denotes a required field</p>
-<% end %>

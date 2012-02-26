@@ -6,7 +6,7 @@
       <% end %>
     </ul>
   <% end %>
-  <% unless @current_user.id == 1 %>
+  <% unless @current_user.id == 1 && current_page?(edit_user_url(1))%>
     <div class = "dropdown" >
       <% if @current_user.security == "Administrator" %>
         <label class = "user"><h3>Security Level</h3></label>
@@ -32,3 +32,4 @@
   </div>
   <%= f.submit :class => "buttons" %>
 <% end %>
+<%= button_to("Cancel", sessions_path, :method => :get, :class => "buttons") %>

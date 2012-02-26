@@ -20,6 +20,6 @@
       <%= check_box("parts_kit", "deprecated") %>
     </div>
   <% end %>
-  <%= f.submit :class => "buttons" %>  
+  <%= f.submit "Create Parts Kit",  :class => "buttons" %>  
 <% end %>
-<%= submit_tag 'Cancel', :name => 'parts_kits[cancel]'%> 
+<%= button_to("Cancel", parts_path, :method => :get, :class => "buttons") %>

@@ -11,3 +11,4 @@
   <%= f.text_field :student_email, :id => "new_trans_field" %>
   <div><%= f.submit :class => "buttons" %></div>
 <% end %>
+<%= button_to("Cancel", sessions_path, :method => :get, :class => "buttons") %>

@@ -17,6 +17,7 @@
       <td></td>
       <td></td>
       <td><%= text_field(:transaction_part, :part_quantity) %></td>
+      <td />
       <td class = "buttons" ><%= submit_tag(value="Add to order") %></td>
       <%= hidden_field(:transaction_part, :transaction_id, options={:value => @transaction.id}) %>
       <% end %>
@@ -28,9 +29,11 @@
 </div>
 <% if @transaction.sale_completed.eql?(false) %>
   <%= form_for @transaction do |f| %>
-    <div class = "buttons" ><%= submit_tag(value="Complete Sale") %></div>
+    <div class = "buttons" ><%= submit_tag(value="Complete Sale")%></div>
   <% end %>
-  <div class = "cancel_button" >
-    <%= link_to "Cancel Transaction", @transaction, :method => :delete, :confirm => "Are you sure?" %>
-  </div>
+  <%= button_to("Cancel Transaction", @transaction, :method => :delete, :confirm => "Are you sure?", :class => "buttons") %>
+  <%= button_to("Suspend Transaction", sessions_path, :method => :get, :class => "buttons") %>
+<% else %>
+  <%= button_to("Cancel Edit", transactions_path, :method => :get, :class => "buttons") %>
 <% end %>
+

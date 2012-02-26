@@ -31,7 +31,10 @@ STRUCTURE
 #bodywrapper {
 	width: 980px;
 	margin-left: 25px;
-	margin-bottom: 300px;
+}
+
+body {
+  padding-bottom: 50px; 
 }
 
 /************************************************************************************
