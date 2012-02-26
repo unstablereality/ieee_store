@@ -17,9 +17,10 @@
   <% unless current_page?(new_parts_kit_url) %>
     <div class = "field">
       <%= f.label :deprecated %>
-      <%= check_box("parts_kit", "deprecated") %>
+      <%= check_box("parts_kit", "deprecated", {:class => "checkbox"}) %>
     </div>
   <% end %>
   <%= f.submit "Create Parts Kit",  :class => "buttons" %>  
 <% end %>
 <%= button_to("Cancel", parts_path, :method => :get, :class => "buttons") %>
+<br />

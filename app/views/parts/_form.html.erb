@@ -6,34 +6,50 @@
       <% end %>
     </ul>
   <% end %>
-  <table>
-    <tr>
-      <td>Name*</td>
-      <td>Description*</td>
-      <td>Jameco Part No.</td>
-      <td>Quantity on Hand</td>
-      <td>Nominal Quantity</td>
-      <td>Single Cost</td>
-      <td>Lot Cost</td>
-      <td>Lot Size</td>
-      <td>Student Price</td>
-      <td>Deprecated</td>
-    </tr>
-    <tr>
-      <td><%= f.text_field :name %></td>
-      <td><%= f.text_field :description %></td>
-      <td><%= f.text_field :jameco_pn, :size => '8' %></td>
-      <td><%= f.text_field :quantity, :size => '3' %></td>
-      <td><%= f.text_field :nominal_quantity, :size => '3' %></td>
-      <td><%= f.text_field :display_single_cost, :size => '6', :class => "money" %></td>
-      <td><%= f.text_field :display_lot_cost, :size => '6', :class => "money" %></td>
-      <td><%= f.text_field :lot_size, :size => '3' %></td>
-      <td><%= f.text_field :display_student_price, :size => '6', :class => "money" %></td>
-      <td><%= check_box("part", "deprecated") %></td>
-    </tr>
-  </table>
+  
+  <div class="field">
+    <h3><%= f.label :name, "Name*", :class => "user" %></h3>
+    <%= f.text_field :name, :class => "user" %>
+  </div>  
+  <div class="field">
+    <h3><%= f.label :description, "Description*", :class => "user" %></h3>
+    <%= f.text_field :description, :class => "user" %>
+  </div>  
+  <div class="field">
+    <h3><%= f.label :jameco_pn, :class => "user" %></h3>
+    <%= f.text_field :jameco_pn %>
+  </div>  
+  <div class="field">
+    <h3><%= f.label :quantity, :class => "user" %></h3>
+    <%= f.text_field :quantity %>
+  </div>  
+  <div class="field">
+    <h3><%= f.label :nominal_quantity, :class => "user" %></h3>
+    <%= f.text_field :nominal_quantity %>
+  </div>  
+  <div class="field">
+    <h3><%= f.label :single_cost, :class => "user" %></h3>
+    <%= f.text_field :display_single_cost %>
+  </div>  
+  <div class="field">
+    <h3><%= f.label :lot_cost, :class => "user" %></h3>
+    <%= f.text_field :display_lot_cost %>
+  </div>  
+  <div class="field">
+    <h3><%= f.label :lot_size, :class => "user" %></h3>
+    <%= f.text_field :lot_size %>
+  </div>  
+  <div class="field">
+    <h3><%= f.label :student_price, :class => "user" %></h3>
+    <%= f.text_field :display_student_price %>
+  </div>  
+  <div class="checkbox">
+    <h3><%= f.label :deprecated, :class => "user" %></h3>
+    <%= check_box("part", "deprecated", {:class => "checkbox"}) %>
+  </div>
   <%= f.submit :class => "buttons" %>
 <% end %>
   <%= button_to("Cancel", parts_path, :method => :get, :class => "buttons") %>
+  <br />
   <br />
   <p>* denotes a required field</p>

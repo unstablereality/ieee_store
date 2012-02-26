@@ -1,6 +1,5 @@
 <%= render 'form' %>
-<%# link_to "Add Component", new_kit_component_path, :parts_kit_id => @parts_kit.id %>
-<table>
+<table class = "kit_table" >
   <tr>
     <th>Part Name</th>
     <th>Description</th>
@@ -13,6 +12,7 @@
     <td></td>
     <td></td>
     <td><%= text_field(:kit_component, :part_quantity) %></td>
+    <td />
     <td class = "submit_button" ><%= submit_tag(value="Add to Kit") %></td>
     <%= hidden_field(:kit_component, :parts_kit_id, options={:value => @parts_kit.id}) %>
     <% end %>
