@@ -21,8 +21,8 @@ class PartsController < ApplicationController
   end
   
   def index
-    @parts = Part.all
-    @parts_kits = PartsKit.all
+    @parts = Part.find(:all, :order => 'name, description')
+    @parts_kits = PartsKit.find(:all, :order => 'name, description')
   end
   
   def edit

@@ -12,7 +12,7 @@
   <%= render @transaction.transaction_parts %>
   <% if @transaction.sale_completed.eql?(false) %>
     <tr><%= form_tag "#{transaction_parts_path}" do %>
-      <td><%= select(:transaction_part, :item_id, @dropdown_list, :prompt => true)%>
+      <td><%= select(:transaction_part, :item_id, @dropdown_list.sort(), :prompt => true)%>
       <td></td>
       <td></td>
       <td></td>
