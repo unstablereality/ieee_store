@@ -22,7 +22,7 @@ class PartsController < ApplicationController
   
   def index
     @parts = Part.find(:all, :order => 'name, description')
-    @parts_kits = PartsKit.find(:all, :order => 'name, description')
+    @parts_kits = PartsKit.find(:all, :order => 'name')
   end
   
   def edit

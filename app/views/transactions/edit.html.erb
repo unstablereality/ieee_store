@@ -29,7 +29,7 @@
 </div>
 <% if @transaction.sale_completed.eql?(false) %>
   <%= form_for @transaction do |f| %>
-    <div class = "buttons" ><%= submit_tag(value="Complete Sale")%></div>
+    <%= submit_tag(value="Complete Sale", :class => "buttons")%>
   <% end %>
   <%= button_to("Cancel Transaction", @transaction, :method => :delete, :confirm => "Are you sure?", :class => "buttons") %>
   <%= button_to("Suspend Transaction", sessions_path, :method => :get, :class => "buttons") %>
