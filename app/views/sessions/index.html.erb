@@ -2,12 +2,14 @@
 <ul>
   <li><%= link_to "Begin New Transaction", new_transaction_path %></li>
   <li><%= link_to "Transaction History", transactions_path %></li>
+  <li><%= link_to "Inventory Status", root_path %></li>
 </ul>
 
 <% if @current_user.security == "Administrator" %>
   <h1>Administrator Functions</h1>
   <ul>
     <li><%= link_to "Inventory Management", parts_path %></li>
+    <li><%= link_to "Generate Price List", price_list_index_path %></li>
     <li><%= link_to "User Administration", users_path %></li>
   </ul>
 <% end %>

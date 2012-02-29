@@ -1,0 +1,27 @@
+<h1>Price List</h1>
+<p>Copy and paste this page into an Excel spreadsheet for an easily printable
+price list.</p>
+
+<table>
+  <th>Name</th>
+  <th>Description</th>
+  <th>Price</th>
+  <% @parts_kits.each do |k| %>
+    <tr>
+      <td><%= k.name %> </td>
+      <td></td>
+      <td>$<%= k.display_kit_price %> </td>
+    </tr>
+  <% end %>
+  <tr>
+  </tr>
+  <tr />
+  <% @parts.each do |p| %>
+    <tr> 
+      <td><%= p.name %></td>
+      <td><%= p.description %></td>
+      <td>$<%= p.display_student_price %></td>
+    <tr>
+  <% end %>
+  <tr />
+</table>

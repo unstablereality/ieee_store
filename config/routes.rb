@@ -65,7 +65,9 @@ IeeeStore::Application.routes.draw do
     resources :sessions
     resources :transaction_parts
     resources :users
-    root :to => 'sessions#new'
+    resources :price_list
+    get 'admin' => 'sessions#new', :as => 'admin'
+    root :to => 'student_view#index'
     
   #end
 end

@@ -1,0 +1,21 @@
+<h1>IEEE Parts Store</h1>
+
+<!-- calculate maximum quantity of kits -->
+<% @parts_kits.kit_components.each do |kc| %>
+  @existing_kit_quantity = kc.part.quantity / kc.part_quantity
+  @trans_quantity = self.part_quantity
+  @quantity = @existing_kit_quantity - @trans_quantity
+  if (@quantity) < 0
+    if (@low_qty)
+      if (@quantity < @low_qty)
+        @low_qty = @quantity
+        @component = kc
+      end
+    else
+      @low_qty = @quantity
+      @component = kc
+    end
+  end
+
+<p>Parts Kits <%= @low_qty %> </p>
+display parts
