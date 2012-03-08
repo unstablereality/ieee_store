@@ -1,21 +1,43 @@
 <h1>IEEE Parts Store</h1>
 
-<!-- calculate maximum quantity of kits -->
-<% @parts_kits.kit_components.each do |kc| %>
-  @existing_kit_quantity = kc.part.quantity / kc.part_quantity
-  @trans_quantity = self.part_quantity
-  @quantity = @existing_kit_quantity - @trans_quantity
-  if (@quantity) < 0
-    if (@low_qty)
-      if (@quantity < @low_qty)
-        @low_qty = @quantity
-        @component = kc
-      end
-    else
-      @low_qty = @quantity
-      @component = kc
-    end
-  end
+<p>Current quantity does not exclude parts reserved for kits</p>
+<div class="list">
+  <!-- calculate the quantity of parts less kits if in a kit -->
+  <table>
+    <th>Part Name</th>
+    <th>Description</th>
+    <th>Quantity</th>
+    <% @parts.each do |p| %>
+      <tr>
+        <td><%= p.name %></td>
+        <td><%= p.description %></td>
+        <td><%= p.quantity %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
 
-<p>Parts Kits <%= @low_qty %> </p>
-display parts
+<div class="list">
+  <table>
+    <th>Kit Name</th>
+    <th>Quantity</th>
+    <!-- calculate maximum quantity of kits and display the kit + quantity -->
+    <% @parts_kits.each do |pk| %>
+      <% @low_qty = -1 %>
+      <% pk.kit_components.each do |kc| %>
+        <% @existing_quantity = kc.part.quantity / kc.part_quantity %> 
+          <% if (@low_qty > -1) %>
+            <% if (@existing_quantity < @low_qty) %> 
+              <% @low_qty = @existing_quantity %> 
+            <% end %> 
+          <% else %> 
+            <% @low_qty = @existing_quantity %>
+          <% end %>
+      <% end %>
+      <tr>
+        <td><%= @current_user ? (link_to pk.name, parts_kit_path(pk)) : pk.name %></td>
+        <td><%= @low_qty %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

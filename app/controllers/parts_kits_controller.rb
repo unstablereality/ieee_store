@@ -1,5 +1,6 @@
 class PartsKitsController < ApplicationController
   
+  before_filter :is_shopkeeper, :only => [:show]
   before_filter :is_admin
   before_filter :get_available_parts, :only => [:new,:edit]
   
@@ -32,7 +33,7 @@ class PartsKitsController < ApplicationController
   def update
     @parts_kit = PartsKit.find(params[:id])
     if (@parts_kit.update_attributes(params[:parts_kit]))
-      redirect_to "#{parts_kits_path}/#{@parts_kit.id}"
+      redirect_to parts_kit_path(@parts_kit)
     else
       flash.alert = "Update Failed!"
       render :edit

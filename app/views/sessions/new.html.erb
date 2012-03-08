@@ -9,5 +9,6 @@
     <%= label_tag :password %>
     <%= password_field_tag :password, nil, :class => "user" %>
   </div>
+  <p><%= link_to "Reset Password", new_password_reset_path %></p>
   <div class = "buttons"><%= submit_tag "Log in" %></div>
 <% end %>

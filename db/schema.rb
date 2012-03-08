@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120221230539) do
+ActiveRecord::Schema.define(:version => 20120306143058) do
 
   create_table "kit_components", :force => true do |t|
     t.integer  "parts_kit_id"
@@ -72,8 +72,10 @@ ActiveRecord::Schema.define(:version => 20120221230539) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "security",        :default => "shopkeeper"
+    t.string   "security",               :default => "shopkeeper"
     t.string   "name"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
 end

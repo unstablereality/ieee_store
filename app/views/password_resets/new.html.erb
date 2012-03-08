@@ -1,0 +1,9 @@
+<h1>Reset Password</h1>
+
+<%= form_tag password_resets_path, :method => :post do %>
+  <div class="field">
+    <%= label_tag :email %>
+    <%= text_field_tag :email, params[:email], :class => "user" %>
+  </div>
+  <%= submit_tag(value="Reset Password", :class => "buttons") %>
+<% end %>

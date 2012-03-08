@@ -1,4 +1,5 @@
 IeeeStore::Application.routes.draw do
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -66,6 +67,7 @@ IeeeStore::Application.routes.draw do
     resources :transaction_parts
     resources :users
     resources :price_list
+    resources :password_resets
     get 'admin' => 'sessions#new', :as => 'admin'
     root :to => 'student_view#index'
     

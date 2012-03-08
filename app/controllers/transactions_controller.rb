@@ -11,7 +11,6 @@ class TransactionsController < ApplicationController
     if (@transaction.save)
       redirect_to edit_transaction_path(@transaction)
     else
-      flash.alert = "Sale Failed!"
       render :new
     end
   end
@@ -50,7 +49,6 @@ class TransactionsController < ApplicationController
       flash.notice = "Transaction Successfully Cancelled"
       redirect_to :transactions    
     else
-      flash.alert = "Destroy Failed!"
       redirect_to :transactions
     end
   end
