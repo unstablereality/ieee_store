@@ -30,7 +30,7 @@ STRUCTURE
 *************************************************************************************/
 #bodywrapper {
 	width: 980px;
-	margin-left: 25px;
+	margin: 0px 25px 0px 25px;
 }
 
 body {
@@ -287,4 +287,15 @@ td.buttons{
 .total{
   font-size: 1.2em;
   margin-top: 10px;
+}
+
+/* Inventory Status Conditional Formatting */
+.low_qty{
+  background-color: #cc6600;
+  color: yellow;
+}
+
+.sold_out{
+  background-color: rgb(102,0,0);
+  color: rgb(255,0,0);
 }

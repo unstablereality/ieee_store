@@ -1,43 +1,60 @@
-<h1>IEEE Parts Store</h1>
+<div style="margin-top:30px">
+  <h1>IEEE Parts Store Inventory Status</h1>
 
-<p>Current quantity does not exclude parts reserved for kits</p>
-<div class="list">
-  <!-- calculate the quantity of parts less kits if in a kit -->
-  <table>
-    <th>Part Name</th>
-    <th>Description</th>
-    <th>Quantity</th>
-    <% @parts.each do |p| %>
-      <tr>
-        <td><%= p.name %></td>
-        <td><%= p.description %></td>
-        <td><%= p.quantity %></td>
-      </tr>
-    <% end %>
-  </table>
-</div>
-
-<div class="list">
-  <table>
-    <th>Kit Name</th>
-    <th>Quantity</th>
-    <!-- calculate maximum quantity of kits and display the kit + quantity -->
-    <% @parts_kits.each do |pk| %>
-      <% @low_qty = -1 %>
-      <% pk.kit_components.each do |kc| %>
-        <% @existing_quantity = kc.part.quantity / kc.part_quantity %> 
-          <% if (@low_qty > -1) %>
-            <% if (@existing_quantity < @low_qty) %> 
-              <% @low_qty = @existing_quantity %> 
-            <% end %> 
-          <% else %> 
-            <% @low_qty = @existing_quantity %>
-          <% end %>
+  <p>Current quantity does not exclude parts reserved for kits</p>
+  <div>
+    <table style="float:left; margin:0px 10px 20px 0px; width:35%">
+      <th>Parts Kit Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <!-- calculate maximum quantity of kits and display the kit + quantity -->
+      <% @parts_kits.each do |pk| %>
+        <% @low_qty = -1 %>
+        <% pk.kit_components.each do |kc| %>
+          <% @existing_quantity = kc.part.quantity / kc.part_quantity %> 
+            <% if (@low_qty > -1) %>
+              <% if (@existing_quantity < @low_qty) %> 
+                <% @low_qty = @existing_quantity %> 
+              <% end %> 
+            <% else %> 
+              <% @low_qty = @existing_quantity %>
+            <% end %>
+        <% end %>
+        <tr>
+          <td><%= @current_user ? (link_to pk.name, parts_kit_path(pk)) : pk.name %></td>
+          <%= content_tag(:td, :class => inventory_color(@low_qty, 20)) do %><%= @low_qty %><% end %>
+          <td>$<%= pk.display_kit_price %></td>
+        </tr>
       <% end %>
+    </table>
+    
+    <table style="width:14%; float:left; margin: 0px 0px 20px 0px">
+      <th>Legend</th>
       <tr>
-        <td><%= @current_user ? (link_to pk.name, parts_kit_path(pk)) : pk.name %></td>
-        <td><%= @low_qty %></td>
+        <td class = "low_qty">Low Quantity</td>
       </tr>
-    <% end %>
-  </table>
+      <tr>
+        <td class = "sold_out">Sold Out</td>
+      </tr>
+    </table>
+  </div>
+
+  <div>
+    <table style="width:50%; clear:both">
+      <th>Part Name</th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <% @parts.each do |p| %>
+        <tr>
+          <td><%= p.name %></td>
+          <td><%= p.description %></td>
+          <%= content_tag(:td, :class => inventory_color(p.quantity, p.nominal_quantity)) do %><%= p.quantity %><% end %>
+          <td>$<%= p.display_student_price %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+
 </div>

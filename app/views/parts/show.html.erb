@@ -1,15 +1,45 @@
-<table id='show_part'>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Jameco Part No.</th>
-    <th>Quantity on Hand</th>
-    <th>Nominal Quantity</th>
-    <th>Single Cost</th>
-    <th>Lot Cost</th>
-    <th>Lot Size</th>
-    <th>Student Price</th>
-    <th>Deprecated</th>
-  </tr>
-    <%= render @part %>
-</table>
+<div class="field">
+  <label class="user"><h3>Name</h3></label>
+  <p class="user"><%= @part.name %></p>
+</div>
+<div class="field">
+  <label class="user"><h3>Description</h3></label>
+  <p class="user"><%= @part.description %></p>
+</div>
+<div class="field">
+  <label class="user"><h3>Part Number</h3></label>
+  <p class="user"><%= @part.jameco_pn %></p>
+</div>
+<div class="field">
+  <label class="user"><h3>Quantity on Hand</h3></label>
+  <p class="user"><%= @part.quantity %></p>
+</div>
+<div class="field">
+  <label class="user"><h3>Nominal Quantity</h3></label>
+  <p class="user"><%= @part.nominal_quantity %></p>
+</div>
+<div class="field">
+  <label class="user"><h3>Single Cost</h3></label>
+  <p class="user"><%= @part.single_cost %></p>
+</div>
+<div class="field">
+  <label class="user"><h3>Lot Cost</h3></label>
+  <p class="user"><%= @part.lot_cost %></p>
+</div>
+<div class="field">
+  <label class="user"><h3>Lot Size</h3></label>
+  <p class="user"><%= @part.lot_size %></p>
+</div>
+<div class="field">
+  <label class="user"><h3>Student Price</h3></label>
+  <p class="user"><%= @part.student_price %></p>
+</div>
+<div class="field">
+  <label class="user"><h3>Deprecated</h3></label>
+  <% if @part.deprecated.eql?(true) %>
+    <p class="user">Yes</p>
+  <% else %>
+    <p class="user">No</p>
+  <% end %>
+</div>
+<%= button_to("Edit Part", edit_part_path(@part), :method => :get, :class => "buttons") %>

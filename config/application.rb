@@ -48,5 +48,10 @@ module IeeeStore
     
     #Enable SSL Encryption
     #config.force_ssl = true
+    # Add url handling to mailers
+    config.action_mailer.default_url_options = { :host => "ieee-memphis.org/store" }
+    
+    # Set default time zone to Central US
+    config.time_zone = "Central Time (US & Canada)"  
   end
 end

@@ -1,0 +1,2 @@
+module OrderReportHelper
+end

@@ -1,6 +1,9 @@
 <tr>
   <td><%= link_to_unless_current transaction.id, transaction %></td>
   <% if current_page?(:action=>"index", :controller=>"transactions") %>
+    <td><%= transaction.created_at.to_formatted_s(:transactions) %></td>
+  <% end %>
+  <% if current_page?(:action=>"index", :controller=>"transactions") %>
     <td><%= transaction.student_email %></td>
   <% end %>
   <% if current_page?(:action=>"index", :controller=>"transactions") %>

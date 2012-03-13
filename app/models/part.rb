@@ -1,6 +1,7 @@
 class Part < ActiveRecord::Base
   validates :name, :presence => true
   validates :description, :presence => true
+  validates :nominal_quantity, :presence => true
 
   composed_of :display_single_cost,
     :class_name => 'Money',

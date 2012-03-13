@@ -1,12 +1,6 @@
 <h2>Transaction Number: <%= @transaction.id %></h2>
-<h3>Student E-Mail: <%= @transaction.student_email %><br></h2>
-  <% if @transaction.sale_completed.eql?(true)%>
-    <% if @current_user.security == "Administrator" %>
-      <%= link_to "Edit Transaction", edit_transaction_path(@transaction) %>
-    <% end %>
-  <% else %>
-    <%= link_to "Resume Suspended Transaction", edit_transaction_path(@transaction) %>
-  <% end %>
+<h3>Student E-Mail: <%= @transaction.student_email %><br></h3>
+<p><%= @transaction.created_at.to_formatted_s(:transactions) %><br><p>
 <table id='transaction_parts'>
   <tr>
     <th>Part Name</th>
@@ -22,3 +16,10 @@
 Transaction Total: 
 $<%= @transaction.display_transaction_total %>
 </div>
+  <% if @transaction.sale_completed.eql?(true)%>
+    <% if @current_user.security == "Administrator" %>
+      <%= button_to("Edit Transaction", edit_transaction_path(@transaction), :method => :get, :class => "buttons") %>
+    <% end %>
+  <% else %>
+    <%= button_to("Resume Suspended Transaction", edit_transaction_path(@transaction), :method => :get, :class => "buttons") %>
+  <% end %>

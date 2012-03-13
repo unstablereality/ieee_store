@@ -57,7 +57,7 @@ IeeeStore::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
   
-  #scope "/store" do
+  scope "/store" do
 
     resources :parts
     resources :parts_kits
@@ -68,8 +68,9 @@ IeeeStore::Application.routes.draw do
     resources :users
     resources :price_list
     resources :password_resets
+    resources :order_report
     get 'admin' => 'sessions#new', :as => 'admin'
     root :to => 'student_view#index'
     
-  #end
+  end
 end
