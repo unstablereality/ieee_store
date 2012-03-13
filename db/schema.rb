@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120306143058) do
+ActiveRecord::Schema.define(:version => 20120313144758) do
 
   create_table "kit_components", :force => true do |t|
     t.integer  "parts_kit_id"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20120306143058) do
     t.boolean  "deprecated", :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "class_size", :default => 0
   end
 
   create_table "transaction_parts", :force => true do |t|

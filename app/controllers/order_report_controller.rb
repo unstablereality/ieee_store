@@ -9,6 +9,6 @@ class OrderReportController < ApplicationController
   
   def index
     @parts = Part.where(:deprecated => false).order("name").all
-    @kit_quantity = params[:quantity]
+    @parts_kits = PartsKit.all
   end  
 end
