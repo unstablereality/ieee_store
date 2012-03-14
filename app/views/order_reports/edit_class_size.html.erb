@@ -1,0 +1,11 @@
+<h2>Students Per Class</h2>
+
+<%= form_tag(update_class_size_order_reports_path, :method => 'put') do %>
+  <% @parts_kits.each do |pk| %>
+    <%= fields_for "parts_kits[]", pk do |f| %>
+      <h4><%= pk.name %></h4>
+      <p><%= f.text_field :class_size %></p>
+    <% end %>
+  <% end %>
+  <p><%= submit_tag "Generate Report", :class => 'buttons' %></p>
+<% end %>

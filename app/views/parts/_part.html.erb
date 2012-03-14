@@ -5,9 +5,7 @@
     <td><%= part.jameco_pn %></td>
   <% end %>
   <td><%= part.quantity %></td>
-  <% if current_page?(part_url(part)) %>
-    <td><%= part.nominal_quantity %></td>
-  <% end %>
+  <td><%= part.nominal_quantity %></td>
   <% if current_page?(part_url(part)) %>
     <td class = "money">$<%= part.display_single_cost%></td>
   <% end %>

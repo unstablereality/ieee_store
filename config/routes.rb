@@ -68,7 +68,12 @@ IeeeStore::Application.routes.draw do
     resources :users
     resources :price_list
     resources :password_resets
-    resources :order_report
+    resources :order_reports do
+      collection do 
+        post :edit_class_size
+        put  :update_class_size
+      end
+    end
     get 'admin' => 'sessions#new', :as => 'admin'
     root :to => 'student_view#index'
     

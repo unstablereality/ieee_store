@@ -1,0 +1,41 @@
+<h1>Inventory Order Report</h1>
+
+<table>
+  <th>Part Name</th>
+  <th>Description</th>
+  <th>Part Number</th>
+  <th>Current Quantity</th>
+  <th>Nominal Quantity</th>
+  <th>Minimum Needed</th>
+  <% @parts.each do |p| %>
+    <% @quantity = 0 %>
+    <% @parts_kits.each do |pk| %>
+      <% pk.kit_components.each do |kc| %>
+        <% if kc.part.id.eql?(p.id) %>
+          <% @quantity += kc.part_quantity * pk.class_size %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% unless @quantity > 0 %>
+      <% if p.quantity < p.nominal_quantity * 0.4 %>
+        <tr>
+          <td><%= p.name %></td>
+          <td><%= p.description %></td>
+          <td><%= p.jameco_pn %></td>
+          <td><%= p.quantity %></td>
+          <td><%= p.nominal_quantity %></td>
+          <td><%= p.nominal_quantity - p.quantity %></td>
+        </tr>
+      <% end %>
+    <% else %>
+        <tr>
+          <td><%= p.name %></td>
+          <td><%= p.description %></td>
+          <td><%= p.jameco_pn %></td>          
+          <td><%= p.quantity %></td>
+          <td><%= p.nominal_quantity %></td>
+          <td><%= @quantity %></td>
+        </tr>
+    <% end %>
+  <% end %>
+</table>
