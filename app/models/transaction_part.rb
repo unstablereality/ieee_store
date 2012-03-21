@@ -2,7 +2,6 @@ class TransactionPart < ActiveRecord::Base
   belongs_to :part
   belongs_to :parts_kit
   belongs_to :transaction
-  validates :part_id, :presence => true
   validates :part_quantity, :numericality => true
   before_destroy :return_inventory
   attr_accessor :item_id

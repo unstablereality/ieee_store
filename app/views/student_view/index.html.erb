@@ -1,4 +1,3 @@
-<div style="margin-top:30px">
   <h1>IEEE Parts Store Inventory Status</h1>
 
   <p>Current quantity does not exclude parts reserved for kits</p>
@@ -21,7 +20,11 @@
             <% end %>
         <% end %>
         <tr>
-          <td><%= @current_user ? (link_to pk.name, parts_kit_path(pk)) : pk.name %></td>
+          <% if @current_user %>
+            <td><%= @current_user.security.eql?("Administrator") ? (link_to pk.name, parts_kit_path(pk)) : pk.name %></td>
+          <% else %>
+            <td><%= pk.name %></td>
+          <% end %>
           <%= content_tag(:td, :class => inventory_color(@low_qty, 20)) do %><%= @low_qty %><% end %>
           <td>$<%= pk.display_kit_price %></td>
         </tr>
@@ -47,7 +50,11 @@
       <th>Price</th>
       <% @parts.each do |p| %>
         <tr>
-          <td><%= p.name %></td>
+        <% if @current_user %>
+          <td><%= @current_user.security.eql?("Administrator") ? (link_to p.name, part_path(p)) : p.name %></td>
+        <% else %>
+          <td><%= p.name %>
+        <% end %>
           <td><%= p.description %></td>
           <%= content_tag(:td, :class => inventory_color(p.quantity, p.nominal_quantity)) do %><%= p.quantity %><% end %>
           <td>$<%= p.display_student_price %></td>
@@ -56,5 +63,3 @@
     </table>
   </div>
 
-
-</div>

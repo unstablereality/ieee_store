@@ -1,12 +1,10 @@
 class OrderReportsController < ApplicationController
   def new
     @parts_kits = PartsKit.order("name").all
-    @parts_kits.each do |pk|
-      pk.update_attribute(:class_size, 0)
-    end
   end
   
   def create
+    @parts_kits = PartsKit.all
     redirect_to order_reports_path
   end
   
@@ -16,7 +14,10 @@ class OrderReportsController < ApplicationController
   end  
   
   def edit_class_size
-    puts params
+    @parts_kits = PartsKit.all
+    @parts_kits.each do |pk|
+      pk.update_attribute(:class_size, 0)
+    end
     unless params[:parts_kit_ids]
       redirect_to order_reports_path
     end

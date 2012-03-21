@@ -29,8 +29,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 STRUCTURE
 *************************************************************************************/
 #bodywrapper {
-	width: 980px;
-	margin: 0px 25px 0px 25px;
+	width: 100%;
+	margin: 30px 25px 0px 25px;
+	display: block;
 }
 
 body {
@@ -43,20 +44,16 @@ HEADER
 #header {
 	position: relative;
 	height: 60px;
+	margin-bottom: 30px;
 }
 
 /************************************************************************************
 MAIN NAVIGATION
 *************************************************************************************/
 #main-nav {
-	width: 100%;
 	background: #ccc;
 	margin: 0;
 	padding: 0;
-	position: relative;
-	left: 0;
-	bottom: 0;
-	z-index: 100;
 	/* gradient */
 	background: #6a6a6a url(assets/nav-bar-bg.png) repeat-x;
 	background: -webkit-gradient(linear, left top, left bottom, from(#b9b9b9), to(#6a6a6a));
@@ -209,7 +206,12 @@ table{
   margin-top: 15px;
 }
 
-.kit_table{
+#kit_table{
+  border: 0;
+  margin-top: 20px;
+}
+
+#transaction_table{
   border: 0;
   margin-top: 20px;
 }
@@ -271,13 +273,16 @@ td.buttons{
 }
 
 .edit_button{
+  background: none;
+  float: left;
   padding-right: 0px;
   border: none;
 }
 
 .list{
   float: left;
-  padding-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 20px;
 }
 
 .subform{

@@ -1,20 +1,14 @@
 <%= render 'form' %>
-<table class = "kit_table" >
+<table id = "kit_table" >
   <tr>
     <th>Part Name</th>
     <th>Description</th>
-    <th>Jameco Part No.</th>
+    <th>IEEE Cost</th>
+    <th>Student Price</th>
     <th>Quantity in Kit</th>
   </tr>
   <%= render @parts_kit.kit_components %>
-  <tr><%= form_tag kit_components_path do %>
-    <td><%= collection_select(:kit_component, :part_id, Part.order(:name).all, :id, :name_and_desc, :prompt => true)%>
-    <td></td>
-    <td></td>
-    <td><%= text_field(:kit_component, :part_quantity) %></td>
-    <td />
-    <td class = "submit_button" ><%= submit_tag(value="Add to Kit") %></td>
-    <%= hidden_field(:kit_component, :parts_kit_id, options={:value => @parts_kit.id}) %>
-    <% end %>
+  <tr id="kit_form">
+    <%= render 'kit_form' %>
   </tr>
 </table>

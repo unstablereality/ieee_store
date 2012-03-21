@@ -3,7 +3,7 @@
   <table>
     <thead>
       <tr>
-        <th>&nbsp;</th>
+        <th style=""></th>
         <th>Name</th>
         <th>Deprecated</th>
       </tr>
@@ -11,7 +11,7 @@
     <tbody>
       <% @parts_kits.each do |pk| %>
         <tr>
-          <td><%= check_box_tag "parts_kit_ids[]", pk.id %></td>
+          <td style=""><%= check_box_tag "parts_kit_ids[]", pk.id %></td>
           <td><%= pk.name %></td>
           <% if pk.deprecated.eql?(true)%>
             <td>Yes</td>

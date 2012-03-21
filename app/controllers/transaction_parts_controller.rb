@@ -65,12 +65,13 @@ class TransactionPartsController < ApplicationController
   
   def destroy
     @transaction_part = TransactionPart.find(params[:id])
+    @id = @transaction_part.transaction.id
     if (@transaction_part.destroy)
       flash.notice = "Transaction Part Successfully Deleted"
     else
       flash.alert = "Destroy Failed!"
     end
-    redirect_to "#{transactions_path}/#{@transaction_part.transaction_id}/edit"
+    redirect_to edit_transaction_path(@id)
   end
   
 end

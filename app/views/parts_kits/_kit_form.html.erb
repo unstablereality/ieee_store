@@ -1,0 +1,9 @@
+<%= form_tag kit_components_path, :remote => true do %>
+    <td><%= collection_select(:kit_component, :part_id, Part.order(:name).all, :id, :name_and_desc, :prompt => true)%>
+    <td></td>
+    <td></td>
+    <td />
+    <td><%= text_field(:kit_component, :part_quantity) %></td>
+    <td class = "submit_button" ><%= submit_tag(value="Add to Kit") %></td>
+    <%= hidden_field(:kit_component, :parts_kit_id, options={:value => @parts_kit.id}) %>
+<% end %>
