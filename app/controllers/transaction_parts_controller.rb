@@ -53,10 +53,20 @@ class TransactionPartsController < ApplicationController
   
   def update
     @transaction_part = TransactionPart.find(params[:id])
-    @adjustment = @transaction_part.part.quantity + (@transaction_part.part_quantity - params[:transaction_part].values[0].to_i)
+    @trans_qty = @transaction_part.part_quantity
+    puts "params #{params}"
     if (@transaction_part.update_attributes(params[:transaction_part]))
-      @transaction_part.part.update_attribute(:quantity, @adjustment)
-      redirect_to "#{transactions_path}/#{@transaction_part.transaction_id}/edit"
+      if (@transaction_part.part)
+        @adjustment = @transaction_part.part.quantity + (@trans_qty - params[:transaction_part].values[0].to_i)
+        @transaction_part.part.update_attribute(:quantity, @adjustment)
+        redirect_to edit_transaction_path(@transaction_part.transaction_id)
+      else
+        @transaction_part.parts_kit.kit_components.each do |kc|
+          @adjustment = kc.part.quantity + (@trans_qty - params[:transaction_part].values[0].to_i)
+          kc.part.update_attribute(:quantity, @adjustment)
+        end
+        redirect_to edit_transaction_path(@transaction_part.transaction_id)
+      end
     else
       flash.alert = "Update Failed!"
       render :edit
@@ -64,6 +74,7 @@ class TransactionPartsController < ApplicationController
   end
   
   def destroy
+    puts "params #{params}"
     @transaction_part = TransactionPart.find(params[:id])
     @id = @transaction_part.transaction.id
     if (@transaction_part.destroy)
@@ -71,7 +82,7 @@ class TransactionPartsController < ApplicationController
     else
       flash.alert = "Destroy Failed!"
     end
-    redirect_to edit_transaction_path(@id)
+    redirect_to :back
   end
   
 end

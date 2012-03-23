@@ -10,11 +10,19 @@
   <th>Name</th>
   <th>Description</th>
   <th>Quantity</th>
-  <tr>
-    <td><%= @transaction_part.part.name %></td>
-    <td><%= @transaction_part.part.description %></td>
-    <td><div class = "field" ><%= f.text_field :part_quantity%></div></td>
-  </tr>
+  <% if @transaction_part.part %>
+    <tr>
+      <td><%= @transaction_part.part.name %></td>
+      <td><%= @transaction_part.part.description %></td>
+      <td><div class = "field" ><%= f.text_field :part_quantity%></div></td>
+    </tr>
+  <% else %>
+    <tr>
+      <td><%= @transaction_part.parts_kit.name %></td>
+      <td></td>
+      <td><div class = "field" ><%= f.text_field :part_quantity%></div></td>
+    </tr>
+  <% end %>
 </table>
   <%= f.submit :class => "buttons" %>
 <% end %>

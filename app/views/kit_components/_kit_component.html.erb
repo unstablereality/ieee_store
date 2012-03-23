@@ -5,6 +5,6 @@
   <td>$<%= kit_component.part.display_student_price %></td>  
   <td><%= kit_component.part_quantity %></td>
   <% if current_page?(edit_parts_kit_path) %>
-    <td class = "edit_button"><%= link_to image_tag("edit-icon.png"), edit_kit_component_path(kit_component), :remote => true %>  <%= link_to image_tag("delete-button.png"), kit_component, :method => :delete, :confirm => "Are you sure?" %>
+    <td class = "edit_button"><%= link_to image_tag("edit-icon.png"), edit_kit_component_path(kit_component) %>  <%= link_to image_tag("delete-button.png"), kit_component, :method => :delete, :confirm => "Are you sure?" %>
   <% end %>
 </tr>
