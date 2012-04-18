@@ -16,7 +16,7 @@
   </div>
   <% unless current_page?(new_parts_kit_url) %>
     <div class = "field">
-      <%= f.label :deprecated %>
+      <%= f.label :deprecated, "Discontinued" %>
       <%= check_box("parts_kit", "deprecated", {:class => "checkbox"}) %>
     </div>
   <% end %>

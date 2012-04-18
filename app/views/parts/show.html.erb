@@ -8,7 +8,7 @@
 </div>
 <div class="field">
   <label class="user"><h3>Part Number</h3></label>
-  <p class="user"><%= @part.jameco_pn %></p>
+  <p class="user">&nbsp<%= @part.jameco_pn %></p>
 </div>
 <div class="field">
   <label class="user"><h3>Quantity on Hand</h3></label>
@@ -28,14 +28,14 @@
 </div>
 <div class="field">
   <label class="user"><h3>Lot Size</h3></label>
-  <p class="user"><%= @part.lot_size %></p>
+  <p class="user">&nbsp<%= @part.lot_size %></p>
 </div>
 <div class="field">
   <label class="user"><h3>Student Price</h3></label>
   <p class="user">$<%= @part.display_student_price %></p>
 </div>
 <div class="field">
-  <label class="user"><h3>Deprecated</h3></label>
+  <label class="user"><h3>Discontinued</h3></label>
   <% if @part.deprecated.eql?(true) %>
     <p class="user">Yes</p>
   <% else %>

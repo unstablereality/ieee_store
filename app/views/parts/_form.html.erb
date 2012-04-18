@@ -44,7 +44,7 @@
     <%= f.text_field :display_student_price %>
   </div>  
   <div class="checkbox">
-    <h3><%= f.label :deprecated, :class => "user" %></h3>
+    <h3><%= f.label :deprecated, "Discontinued", :class => "user" %></h3>
     <%= check_box("part", "deprecated", {:class => "checkbox"}) %>
   </div>
   <%= f.submit :class => "buttons" %>

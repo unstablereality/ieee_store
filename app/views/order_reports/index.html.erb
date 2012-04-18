@@ -5,7 +5,6 @@
   <th>Description</th>
   <th>Part Number</th>
   <th>Current Quantity</th>
-  <th>Nominal Quantity</th>
   <th>Minimum Needed</th>
   <% @parts.each do |p| %>
     <% @quantity = 0 %>
@@ -23,7 +22,6 @@
           <td><%= p.description %></td>
           <td><%= p.jameco_pn %></td>
           <td><%= p.quantity %></td>
-          <td><%= p.nominal_quantity %></td>
           <td><%= p.nominal_quantity - p.quantity %></td>
         </tr>
       <% end %>
@@ -33,7 +31,6 @@
           <td><%= p.description %></td>
           <td><%= p.jameco_pn %></td>          
           <td><%= p.quantity %></td>
-          <td><%= p.nominal_quantity %></td>
           <td><%= @quantity %></td>
         </tr>
     <% end %>

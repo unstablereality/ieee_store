@@ -7,6 +7,12 @@
 <% @profit = (@parts_kit.kit_price - @parts_kit_cost)/100 %>
 <% @parts_kit_cost /= 100 %>
 <h3>Kit Cost: <%= number_to_currency(@parts_kit_cost, :precision => 2) %> (Profit: <%= number_to_currency(@profit, :precision => 2) %>)</h3>
+  <h3>Discontinued:
+  <% if @parts_kit.deprecated.eql?(true) %>
+    Yes
+  <% else %>
+    No
+  <% end %></h3>
 <%= button_to("Edit Kit", edit_parts_kit_path(@parts_kit), :method => :get) %>
 <table>
   <tr>
